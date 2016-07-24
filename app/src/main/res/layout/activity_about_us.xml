@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#e3e3e3"
+        android:weightSum="5"
+        tools:context="com.vizy.newsapp.realread.About_Us">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:weightSum="2"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:weightSum="3"
+                android:orientation="vertical"
+                android:layout_margin="10dp">
+                <ImageView
+                    android:layout_weight="1"
+                    android:id="@+id/aditya_image"
+                    android:layout_gravity="center"
+                    android:background="@drawable/circle"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_gravity="end"
+                        android:textStyle="bold"
+                        android:textAlignment="viewEnd"
+                        android:text="Aditya "/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="| Foodie"/>
+
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@drawable/github"
+                    android:id="@+id/aditya_link"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:weightSum="3"
+                android:layout_margin="10dp"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:layout_weight="1"
+                    android:id="@+id/shanu_image"
+                    android:layout_gravity="center"
+                    android:background="@drawable/circle"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:layout_gravity="end"
+                        android:textAlignment="viewEnd"
+                        android:text="Shanu "/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="| Blogger"/>
+
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/shanu_link"
+                    android:background="@drawable/linkedin"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:weightSum="3"
+            android:orientation="vertical"
+            >
+            <ImageView
+                android:layout_weight="1"
+                android:id="@+id/tanveer_image"
+                android:layout_gravity="center"
+                android:background="@drawable/circle"
+                android:layout_width="90dp"
+                android:layout_height="90dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:layout_gravity="end"
+                    android:textAlignment="viewEnd"
+                    android:text="Tanveer "/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="| Deep diver"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:weightSum="2">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@drawable/linkedin"
+                    android:id="@+id/tanveer_link"
+                    android:layout_height="wrap_content" />
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:id="@+id/tanveer_phone"
+                    android:background="@drawable/ic_settings_phone_black_36dp"
+                    android:layout_weight="1"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:weightSum="2"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:weightSum="3"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:id="@+id/kabir_image"
+                    android:layout_gravity="center"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:layout_gravity="end"
+                        android:textAlignment="viewEnd"
+                        android:text="Kabir "/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="| Artist"/>
+
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/linkedin"
+                    android:layout_gravity="center"
+                    android:id="@+id/kabir_link"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:weightSum="3"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:id="@+id/saad_image"
+                    android:layout_gravity="center"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+
+                        android:textStyle="bold"
+                        android:layout_gravity="end"
+                        android:textAlignment="viewEnd"
+                        android:text="Saad "/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="| Illusionlist"/>
+
+                </LinearLayout>
+                <ImageButton
+                    android:background="@drawable/github"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:id="@+id/saad_link"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:weightSum="3"
+            android:orientation="vertical"
+            >
+            <ImageView
+                android:layout_weight="1"
+                android:background="@drawable/circle"
+                android:id="@+id/archit_image"
+                android:layout_gravity="center"
+                android:layout_width="90dp"
+                android:layout_height="90dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="2">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:layout_gravity="end"
+                    android:textAlignment="viewEnd"
+                    android:text="Archit "/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="| Singer"/>
+
+            </LinearLayout>
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:background="@drawable/linkedin"
+                android:id="@+id/archit_link"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:weightSum="2"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:weightSum="3"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:id="@+id/piyush_image"
+                    android:layout_gravity="center"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:layout_gravity="end"
+                        android:textAlignment="viewEnd"
+                        android:text="Piyush "/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="| Foodie"/>
+
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/linkedin"
+                    android:id="@+id/piyush_link"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:weightSum="3"
+                android:orientation="vertical"
+                >
+                <ImageView
+                    android:layout_weight="1"
+                    android:background="@drawable/circle"
+                    android:id="@+id/nimit_image"
+                    android:layout_gravity="center"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="end"
+                        android:textStyle="bold"
+                        android:textAlignment="viewEnd"
+                        android:text="Nimit "/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="| Sleepster"/>
+
+                </LinearLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/github"
+                    android:layout_gravity="center"
+                    android:id="@+id/nimit_link"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</ScrollView>

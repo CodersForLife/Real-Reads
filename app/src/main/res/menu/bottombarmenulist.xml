@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/google"
+        android:title="Google"
+        android:icon="@mipmap/ic_launcher"/>
+
+    <item
+        android:id="@+id/bbc"
+        android:title="BBC "
+        android:icon="@mipmap/ic_launcher"/>
+
+    <item
+        android:id="@+id/cnbc"
+        android:title="CNBC"
+        android:icon="@mipmap/ic_launcher"/>
+
+    <item
+        android:id="@+id/reddit"
+        android:title="Reddit"
+        android:icon="@mipmap/ic_launcher"/>
+
+</menu>

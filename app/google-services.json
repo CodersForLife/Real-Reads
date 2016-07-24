@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "76011400235",
+    "firebase_url": "https://fir-ignitar.firebaseio.com",
+    "project_id": "firebase-ignitar",
+    "storage_bucket": "firebase-ignitar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76011400235:android:64fbbdda0ae8832e",
+        "android_client_info": {
+          "package_name": "com.vizy.ignitar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "76011400235-1m57ebgmmb5vbe5toi2gkuolkftjadvu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vizy.ignitar",
+            "certificate_hash": "67AB88E063DC4C2C0A9C8C2B13B0AF5F23D86993"
+          }
+        },
+        {
+          "client_id": "76011400235-pm8jajmjeh02vft4el4l2ib0jncht25r.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "76011400235-rtopvnihckbllkuvri1ugharj2ebkigr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPMNn_wT3MWUPf05aHGbAfaGueZmgJJVQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-75041527-4"
+          }
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "76011400235-pm8jajmjeh02vft4el4l2ib0jncht25r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
