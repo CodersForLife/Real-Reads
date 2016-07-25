@@ -1,7 +1,7 @@
 package com.vizy.newsapp.realread;
 
 import android.app.Application;
-import android.support.multidex.MultiDex;
+//import android.support.multidex.MultiDex;
 
 import com.facebook.FacebookSdk;
 import com.facebook.accountkit.AccountKit;
@@ -13,7 +13,7 @@ public class BaseApplication extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
-        MultiDex.install(this);
+        //MultiDex.install(this);
         AccountKit.initialize(getApplicationContext());
         Firebase.setAndroidContext(getApplicationContext());
         FacebookSdk.sdkInitialize(getApplicationContext());
