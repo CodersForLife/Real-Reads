@@ -1,5 +1,6 @@
 package com.vizy.newsapp.realread.activities;
 
+import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
@@ -19,6 +20,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.roughike.bottombar.BottomBar;
+import com.squareup.okhttp.Callback;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
 import com.vizy.newsapp.realread.About_Us;
 import com.vizy.newsapp.realread.Constants;
 import com.vizy.newsapp.realread.R;
@@ -33,6 +38,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,25 +54,87 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView newsCardList;
     private List<Article> newsList;
     private ArticleAdapter articleAdapter;
+    private String news;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+       /* ApiRequest apiRequest = new ApiRequest(RealReadAPI.NEWS_RESULT);
+        String news = apiRequest.getJSON();*/
+        ProgressDialog progress = new ProgressDialog(this);
+        progress.setMessage("Downloading News :) ");
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progress.setIndeterminate(true);
 
-        ApiRequest apiRequest=new ApiRequest(RealReadAPI.NEWS_RESULT);
-        String news =apiRequest.getJSON();
 
-        if(news.length()>0){
+
+
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url(RealReadAPI.NEWS_RESULT)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Request request, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Response responses) {
+
+                if(responses.isSuccessful()){
+                    try {
+                        json = responses.body().string();
+                        JSONObject obj = new JSONObject(json);
+                        JSONArray arr = obj.getJSONArray("articles");
+                        news = arr.toString();
+
+
+                        JSONArray newsArray = new JSONArray(news);
+
+                        for (int i = 0; i < newsArray.length(); i++) {
+                            JSONObject jsonObject = newsArray.getJSONObject(i);
+
+                            Article article = new Article();
+                            article.setAuthor(jsonObject.getString("author"));
+                            article.setDescription(jsonObject.getString("description"));
+                            article.setPublishedAt(jsonObject.getString("publishedAt"));
+                            article.setTitle(jsonObject.getString("title"));
+                            article.setUrl(jsonObject.getString("url"));
+                            article.setUrlToImage(jsonObject.getString("urlToImage"));
+                            newsList.add(article);
+
+                        }
+                        articleAdapter = new ArticleAdapter(newsList, MainActivity.this);
+                        newsCardList = (RecyclerView) findViewById(R.id.news_list);
+                        carouselLayoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL);
+                        carouselLayoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
+                        newsCardList.setLayoutManager(carouselLayoutManager);
+                        newsCardList.setHasFixedSize(true);
+                        newsCardList.setAdapter(articleAdapter);
+
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+
+            }
+        });
+
+
+
+
+       /* if (news.length() > 0) {
             try {
-                JSONArray newsArray=new JSONArray(news);
+                JSONArray newsArray = new JSONArray(news);
 
-                for(int i=0;i<newsArray.length();i++)
-                {
-                    JSONObject jsonObject=newsArray.getJSONObject(i);
+                for (int i = 0; i < newsArray.length(); i++) {
+                    JSONObject jsonObject = newsArray.getJSONObject(i);
 
-                    Article article=new Article();
+                    Article article = new Article();
                     article.setAuthor(jsonObject.getString("author"));
                     article.setDescription(jsonObject.getString("description"));
                     article.setPublishedAt(jsonObject.getString("publishedAt"));
@@ -75,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
                     article.setUrlToImage(jsonObject.getString("urlToImage"));
                     newsList.add(article);
 
-                    articleAdapter=new ArticleAdapter(newsList,this);
+                    articleAdapter = new ArticleAdapter(newsList, this);
                     newsCardList = (RecyclerView) findViewById(R.id.news_list);
                     carouselLayoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL);
                     carouselLayoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
@@ -87,9 +155,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }
-
-
+        }*/
 
 
     }
