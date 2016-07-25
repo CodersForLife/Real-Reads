@@ -68,7 +68,6 @@
         android:orientation="vertical"
         android:layout_weight="2"
         android:layout_height="wrap_content">
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -97,6 +96,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/no_account"
             android:text="Don't have an account ?"
             android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
