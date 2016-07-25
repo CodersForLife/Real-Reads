@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.vizy.newsapp.realread.R;
+import com.vizy.newsapp.realread.model.UserSession;
+
+import java.util.HashMap;
 
 public class SignIn extends AppCompatActivity {
 
@@ -19,16 +22,33 @@ public class SignIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        final UserSession session=new UserSession(getApplicationContext());
+
         signIn=(Button)findViewById(R.id.sign_in);
         noAccount=(Button)findViewById(R.id.no_account);
         mobileNo=(EditText)findViewById(R.id.enter_mobile_no_login);
         password=(EditText)findViewById(R.id.enter_password_login);
+
+        /*signIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String phoneNumber=mobileNo.getText().toString();
+                String pass=password.getText().toString();
+                HashMap<String, String> user = session.getUserDetails();
+                if(phoneNumber==user.get(UserSession.KEY_PHONE)&&pass==user.get(UserSession.KEY_PASSWORD)){
+                    Intent toHome=new Intent(SignIn.this, MainActivity.class);
+                    startActivity(toHome);
+                    finish();
+                }
+            }
+        });*/
 
         noAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent toSignUp=new Intent(SignIn.this, SignUp.class);
                 startActivity(toSignUp);
+                finish();
             }
         });
         

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.vizy.newsapp.realread.R;
+import com.vizy.newsapp.realread.model.UserSession;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -26,14 +27,22 @@ public class SplashScreen extends AppCompatActivity {
         login=(Button)findViewById(R.id.login);
 
         Drawable background=getResources().getDrawable(R.drawable.splash_screen_background);
-        background.setAlpha(400);
+        //background.setAlpha(400);
         bground.setBackground(background);
+
+        UserSession session=new UserSession(getApplicationContext());
+        if (session.isLoggedIn()){
+            Intent toHome=new Intent(SplashScreen.this,MainActivity.class);
+            startActivity(toHome);
+            finish();
+        }
 
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent toCreateAccount=new Intent(SplashScreen.this, SignUp.class);
                 startActivity(toCreateAccount);
+                finish();
             }
         });
 
@@ -42,6 +51,7 @@ public class SplashScreen extends AppCompatActivity {
             public void onClick(View view) {
                 Intent toLogin=new Intent(SplashScreen.this, SignIn.class);
                 startActivity(toLogin);
+                finish();
             }
         });
     }

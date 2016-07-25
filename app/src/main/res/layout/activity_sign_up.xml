@@ -49,26 +49,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/enter_mobile_no"
-            android:text="+91 Mobile Number"
+            android:hint="+91 Mobile Number"
             android:gravity="center"
             android:layout_gravity="center_horizontal"
-            android:textColor="#888888"/>
+            android:textColor="@color/white"
+            android:inputType="number"
+            android:textColorHint="#888888"/>
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/enter_password"
-            android:text="Password"
+            android:hint="Password"
             android:gravity="center"
             android:layout_gravity="center_horizontal"
-            android:textColor="#888888"/>
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/enter_password_again"
-            android:text="Confirm Password"
-            android:gravity="center"
-            android:layout_gravity="center_horizontal"
-            android:textColor="#888888"/>
+            android:textColor="@color/white"
+            android:inputType="textPassword"
+            android:textColorHint="#888888"/>
+
     </LinearLayout>
 
     <LinearLayout
