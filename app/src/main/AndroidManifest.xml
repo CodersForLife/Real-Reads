@@ -38,6 +38,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.SignIn"></activity>
+        <activity android:name=".activities.SplashScreen" />
+        <activity android:name=".activities.SignUp"></activity>
     </application>
 
 </manifest>
