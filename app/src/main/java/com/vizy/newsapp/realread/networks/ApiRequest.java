@@ -26,35 +26,42 @@ public class ApiRequest {
     }
 
     public String getJSON() {
-        try {
-            OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder()
-                    .url(url)
-                    .build();
-            client.newCall(request).enqueue(new Callback() {
-                @Override
-                public void onFailure(Request request, IOException e) {
-                    e.printStackTrace();
-                }
 
-                @Override
-                public void onResponse(Response responses) throws IOException {
-
-                    try {
-                        json = responses.body().string();
-                        JSONObject obj = new JSONObject(json);
-                        JSONArray arr = obj.getJSONArray("articles");
-                        news = arr.toString();
-                    } catch (Exception e) {
+        Thread thread=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                OkHttpClient client = new OkHttpClient();
+                Request request = new Request.Builder()
+                        .url(url)
+                        .build();
+                client.newCall(request).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Request request, IOException e) {
                         e.printStackTrace();
                     }
 
-                }
-            });
-        } catch (Exception e) {
-            // Log.e(TAG,e.getMessage().toString());
-            e.printStackTrace();
-        }
-    return news;
-}
+                    @Override
+                    public void onResponse(Response responses) {
+
+                        if(responses.isSuccessful()){
+                            try {
+                                json = responses.body().string();
+                                JSONObject obj = new JSONObject(json);
+                                JSONArray arr = obj.getJSONArray("articles");
+                                news = arr.toString();
+
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    }
+                });
+
+            }
+        });
+        thread.start();
+
+        return news;
+    }
 }

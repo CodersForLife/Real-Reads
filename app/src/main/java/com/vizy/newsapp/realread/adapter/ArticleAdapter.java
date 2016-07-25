@@ -1,8 +1,8 @@
 package com.vizy.newsapp.realread.adapter;
 
 import android.content.Context;
-import android.graphics.Movie;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,26 +14,30 @@ import com.squareup.picasso.Picasso;
 import com.vizy.newsapp.realread.R;
 import com.vizy.newsapp.realread.model.Article;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleViewHolder> {
 
-    private List<Article> articleList;
+    private List<Article> articleList =new ArrayList<>();
     public Context context;
 
-    public ArticleAdapter(List<Article> articleList, Context context){
-        this.articleList=articleList;
-        this.context=context;
+    public ArticleAdapter(List<Article> articleList, Context context) {
+        this.articleList = articleList;
+        this.context = context;
     }
 
     @Override
     public ArticleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View item= LayoutInflater.from(parent.getContext()).inflate(R.layout.home_screen, parent, false);
-        return new ArticleViewHolder(item);    }
+        View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_screen, parent, false);
+        ArticleViewHolder articleViewHolder=new ArticleViewHolder(item);
+        return articleViewHolder;
+    }
 
     @Override
     public void onBindViewHolder(ArticleViewHolder holder, int position) {
-        final Article article=articleList.get(position);
+        final Article article = articleList.get(position);
+        Log.e("ArticleAdapter","kouh");
         holder.title.setText(article.getTitle());
         holder.description.setText(article.getDescription());
         Picasso.with(context).load(article.getUrlToImage()).into(holder.newsImage);
@@ -44,7 +48,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         return articleList.size();
     }
 
-    public static class ArticleViewHolder extends RecyclerView.ViewHolder{
+    public static class ArticleViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView newsImage;
         private TextView title;
@@ -53,10 +57,10 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
 
         public ArticleViewHolder(View itemView) {
             super(itemView);
-            newsImage=(ImageView)itemView.findViewById(R.id.news_image);
-            title=(TextView)itemView.findViewById(R.id.news_heading);
-            description=(TextView)itemView.findViewById(R.id.news_description);
-            share=(Button)itemView.findViewById(R.id.share1);
+            newsImage = (ImageView) itemView.findViewById(R.id.news_image);
+            title = (TextView) itemView.findViewById(R.id.news_heading);
+            description = (TextView) itemView.findViewById(R.id.news_description);
+            share = (Button) itemView.findViewById(R.id.share1);
         }
     }
 }

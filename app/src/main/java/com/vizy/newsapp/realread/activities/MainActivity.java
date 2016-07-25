@@ -1,6 +1,5 @@
 package com.vizy.newsapp.realread.activities;
 
-import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
@@ -39,6 +38,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,14 +61,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       /* ApiRequest apiRequest = new ApiRequest(RealReadAPI.NEWS_RESULT);
-        String news = apiRequest.getJSON();*/
-        ProgressDialog progress = new ProgressDialog(this);
-        progress.setMessage("Downloading News :) ");
-        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progress.setIndeterminate(true);
-
-
+        newsList = new ArrayList<Article>();
+        newsCardList = (RecyclerView) findViewById(R.id.news_list);
+        carouselLayoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL);
+        carouselLayoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
+        newsCardList.setLayoutManager(carouselLayoutManager);
+        newsCardList.setHasFixedSize(true);
 
 
         OkHttpClient client = new OkHttpClient();
@@ -84,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Response responses) {
 
-                if(responses.isSuccessful()){
+                if (responses.isSuccessful()) {
                     try {
                         json = responses.body().string();
                         JSONObject obj = new JSONObject(json);
@@ -105,57 +103,26 @@ public class MainActivity extends AppCompatActivity {
                             article.setUrl(jsonObject.getString("url"));
                             article.setUrlToImage(jsonObject.getString("urlToImage"));
                             newsList.add(article);
-
                         }
-                        articleAdapter = new ArticleAdapter(newsList, MainActivity.this);
-                        newsCardList = (RecyclerView) findViewById(R.id.news_list);
-                        carouselLayoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL);
-                        carouselLayoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
-                        newsCardList.setLayoutManager(carouselLayoutManager);
-                        newsCardList.setHasFixedSize(true);
-                        newsCardList.setAdapter(articleAdapter);
+
 
 
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+
+                    articleAdapter = new ArticleAdapter(newsList, MainActivity.this);
+                    articleAdapter.notifyDataSetChanged();
+                    newsCardList.setAdapter(articleAdapter);
+                    Log.e("oh","yes");
+
+
                 }
 
             }
         });
 
 
-
-
-       /* if (news.length() > 0) {
-            try {
-                JSONArray newsArray = new JSONArray(news);
-
-                for (int i = 0; i < newsArray.length(); i++) {
-                    JSONObject jsonObject = newsArray.getJSONObject(i);
-
-                    Article article = new Article();
-                    article.setAuthor(jsonObject.getString("author"));
-                    article.setDescription(jsonObject.getString("description"));
-                    article.setPublishedAt(jsonObject.getString("publishedAt"));
-                    article.setTitle(jsonObject.getString("title"));
-                    article.setUrl(jsonObject.getString("url"));
-                    article.setUrlToImage(jsonObject.getString("urlToImage"));
-                    newsList.add(article);
-
-                    articleAdapter = new ArticleAdapter(newsList, this);
-                    newsCardList = (RecyclerView) findViewById(R.id.news_list);
-                    carouselLayoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL);
-                    carouselLayoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
-                    newsCardList.setLayoutManager(carouselLayoutManager);
-                    newsCardList.setHasFixedSize(true);
-                    newsCardList.setAdapter(articleAdapter);
-
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }*/
 
 
     }
