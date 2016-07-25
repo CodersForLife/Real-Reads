@@ -31,5 +31,11 @@ public class SignIn extends AppCompatActivity {
                 startActivity(toSignUp);
             }
         });
+        
+        googleSignIn();
+    }
+
+    private void googleSignIn() {
+
     }
 }

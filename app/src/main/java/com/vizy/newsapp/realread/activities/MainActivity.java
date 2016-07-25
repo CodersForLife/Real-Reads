@@ -1,12 +1,16 @@
 package com.vizy.newsapp.realread.activities;
 
+import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
@@ -55,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     private List<Article> newsList;
     private ArticleAdapter articleAdapter;
     private String news;
+    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +70,27 @@ public class MainActivity extends AppCompatActivity {
         newsCardList = (RecyclerView) findViewById(R.id.news_list);
         carouselLayoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL);
         carouselLayoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
-        newsCardList.setLayoutManager(carouselLayoutManager);
-        newsCardList.setHasFixedSize(true);
+        /*
+        ProgressDialog progress = new ProgressDialog(this);
+        progress.setMessage("Downloading Music :) ");
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progress.setIndeterminate(true);*/
+
+        handler=new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message message) {
+              //  articleAdapter.notifyDataSetChanged();
+
+
+                articleAdapter = new ArticleAdapter(newsList, MainActivity.this);
+
+                newsCardList.setLayoutManager(carouselLayoutManager);
+                newsCardList.setHasFixedSize(true);
+                newsCardList.setAdapter(articleAdapter);
+                return false;
+            }
+        });
+
 
 
         OkHttpClient client = new OkHttpClient();
@@ -103,17 +127,20 @@ public class MainActivity extends AppCompatActivity {
                             article.setUrl(jsonObject.getString("url"));
                             article.setUrlToImage(jsonObject.getString("urlToImage"));
                             newsList.add(article);
+                            Log.e("newsList",newsList.size()+"");
                         }
 
 
 
                     } catch (Exception e) {
-                        e.printStackTrace();
+                    //    e.printStackTrace();
                     }
 
-                    articleAdapter = new ArticleAdapter(newsList, MainActivity.this);
-                    articleAdapter.notifyDataSetChanged();
-                    newsCardList.setAdapter(articleAdapter);
+
+                    Message msg = handler.obtainMessage();
+                    msg.sendToTarget();
+
+
                     Log.e("oh","yes");
 
 
