@@ -12,9 +12,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 
-/**
- * Created by dell on 7/25/2016.
- */
 public class ApiRequest {
     String url;
     String json = "";

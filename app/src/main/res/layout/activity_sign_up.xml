@@ -8,21 +8,36 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:weightSum="3"
+    android:weightSum="4"
     android:orientation="vertical"
     tools:context="com.vizy.newsapp.realread.activities.SignUp">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="1"></LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_weight="1">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Create Your Account"
             android:textColor="@color/white"
-            android:textSize="35sp"
-            android:lines="2"
+            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"
             android:gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get started absolutely free \nand rediscover your habit of reading \nnews"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 
     <LinearLayout
@@ -65,6 +80,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/done_signup"
+            android:background="@drawable/button_prop"
             android:text="Done"
             android:gravity="center"
             android:layout_gravity="center_horizontal"/>
