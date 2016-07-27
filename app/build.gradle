@@ -2,6 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
+    signingConfigs {
+        debug_config {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('src/main/resources/keystores/debug.keystore')
+            storePassword 'android'
+        }
+    }
     compileSdkVersion 24
     buildToolsVersion "24.0.1"
     defaultConfig {
@@ -17,16 +25,13 @@ android {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug_config
+        }
     }
     productFlavors {
-    }
-    signingConfigs {
-        build_config {
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
-            storeFile file('src/main/resources/keystores/debug.keystore')
-            storePassword 'android'
-        }
     }
 }
 
