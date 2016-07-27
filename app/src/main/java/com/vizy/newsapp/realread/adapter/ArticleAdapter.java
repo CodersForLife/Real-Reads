@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.squareup.picasso.Picasso;
 import com.vizy.newsapp.realread.R;
@@ -54,6 +55,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         private TextView title;
         private TextView description;
         private Button share;
+        private ToggleButton bookmarkButton;
 
         public ArticleViewHolder(View itemView) {
             super(itemView);
@@ -61,6 +63,10 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
             title = (TextView) itemView.findViewById(R.id.news_heading);
             description = (TextView) itemView.findViewById(R.id.news_description);
             share = (Button) itemView.findViewById(R.id.share1);
+            bookmarkButton=(ToggleButton)itemView.findViewById(R.id.bookmark_button);
+            bookmarkButton.setText(null);
+            bookmarkButton.setTextOn(null);
+            bookmarkButton.setTextOff(null);
         }
     }
 }

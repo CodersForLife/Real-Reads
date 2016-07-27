@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import com.roughike.bottombar.BottomBar;
 import com.squareup.okhttp.Callback;
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private ArticleAdapter articleAdapter;
     private String news;
     private Handler handler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

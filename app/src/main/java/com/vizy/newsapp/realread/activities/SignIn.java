@@ -140,8 +140,9 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
             // Signed in successfully, show authenticated UI.
             acct = result.getSignInAccount();
             // mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
-            startActivity(new Intent(SignIn.this,MainActivity.class));
-            finish();
+           // startActivity(new Intent(SignIn.this,MainActivity.class));
+            updateUI(true);
+            //finish();
         } else {
             // Signed out, show unauthenticated UI.
             updateUI(false);
@@ -154,6 +155,8 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
 
             String nam=acct.getDisplayName();
             String em=acct.getEmail();
+
+            Log.e("Signin",nam+em+"");
 
             Uri image_url =acct.getPhotoUrl();
 
