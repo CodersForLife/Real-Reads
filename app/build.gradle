@@ -20,6 +20,14 @@ android {
     }
     productFlavors {
     }
+    signingConfigs {
+        build_config {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('src/main/resources/keystores/debug.keystore')
+            storePassword 'android'
+        }
+    }
 }
 
 dependencies {
@@ -32,12 +40,12 @@ dependencies {
     compile 'com.github.pwittchen:swipe:0.0.1'
     compile 'com.squareup.okhttp:okhttp:2.4.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.google.firebase:firebase-messaging:9.0.0'
     compile 'com.roughike:bottom-bar:1.4.0.1'
-    compile 'com.google.firebase:firebase-messaging:9.2.1'
     compile 'com.firebase:firebase-client-android:2.5.2'
     compile 'com.facebook.android:facebook-android-sdk:4.+'
     compile 'com.facebook.android:account-kit-sdk:4.+'
-    
+    compile 'com.google.android.gms:play-services-auth:9.0.0'
 }
 
 

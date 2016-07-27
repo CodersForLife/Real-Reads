@@ -40,7 +40,6 @@
         <activity android:name=".activities.SignIn" />
         <activity android:name=".activities.SignUp" />
         <activity android:name=".activities.MainActivity">
-
         </activity>
     </application>
 
