@@ -133,6 +133,15 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN && data!=null) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            handleSignInResult(result);
+        }
+    }
+
     private void handleSignInResult(GoogleSignInResult result) {
 
         Log.d(TAG, "handleSignInResult:" + result.isSuccess());
@@ -140,8 +149,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
             // Signed in successfully, show authenticated UI.
             acct = result.getSignInAccount();
             // mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
-            startActivity(new Intent(SignIn.this,MainActivity.class));
-            finish();
+            updateUI(true);
         } else {
             // Signed out, show unauthenticated UI.
             updateUI(false);
@@ -154,8 +162,10 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
 
             String nam=acct.getDisplayName();
             String em=acct.getEmail();
-
             Uri image_url =acct.getPhotoUrl();
+
+            UserSession session = new UserSession(this);
+            session.createLoginSession(nam, em);
 
             startActivity(new Intent(SignIn.this,MainActivity.class));
             finish();
