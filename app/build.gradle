@@ -20,6 +20,14 @@ android {
     }
     productFlavors {
     }
+    signingConfigs {
+        build_config {
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+            storeFile file('src/main/resources/keystores/debug.keystore')
+            storePassword 'android'
+        }
+    }
 }
 
 dependencies {
