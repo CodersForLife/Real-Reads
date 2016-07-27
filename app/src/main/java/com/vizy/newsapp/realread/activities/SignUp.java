@@ -36,6 +36,7 @@ public class SignUp extends AppCompatActivity {
                 Intent toHome=new Intent(SignUp.this, MainActivity.class);
                 startActivity(toHome);
                 finish();
+
             }
         });
 
