@@ -62,7 +62,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
             newsImage = (ImageView) itemView.findViewById(R.id.news_image);
             title = (TextView) itemView.findViewById(R.id.news_heading);
             description = (TextView) itemView.findViewById(R.id.news_description);
-            share = (Button) itemView.findViewById(R.id.share1);
+          //  share = (Button) itemView.findViewById(R.id.share1);
             bookmarkButton=(ToggleButton)itemView.findViewById(R.id.bookmark_button);
             bookmarkButton.setText(null);
             bookmarkButton.setTextOn(null);

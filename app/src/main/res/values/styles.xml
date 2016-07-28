@@ -14,4 +14,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="LinkTheme" parent="Widget.AppCompat.Light.ActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:background">#31373b</item>
+        <item name="android:textColorPrimary">#ffffff</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textColorSecondary">#ffffff</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
 </resources>

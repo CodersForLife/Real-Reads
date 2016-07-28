@@ -9,8 +9,13 @@ import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ToggleButton;
+
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -48,6 +53,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+      /*  newsShare=(Button)findViewById(R.id.share_news);
+        bookmarkButton=(ToggleButton)findViewById(R.id.bookmark_button);
+
+        newsShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        if(bookmarkButton.isChecked()){
+
+        }
+
+        else{
+
+        }*/
         newsList = new ArrayList<Article>();
         newsCardList = (RecyclerView) findViewById(R.id.news_list);
         carouselLayoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL);
@@ -128,13 +151,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.about_us:
                 Intent i = new Intent(this, About_Us.class);
                 startActivity(i);
-                return true;
-            case R.id.bookmarks:
                 return true;
             case R.id.feedback:
                 Uri uri = Uri.parse("market://details?id=" + this.getPackageName());
