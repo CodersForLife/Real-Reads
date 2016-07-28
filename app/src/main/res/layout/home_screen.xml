@@ -44,12 +44,18 @@
                     android:id="@+id/news_heading"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:padding="5dp"
                     android:gravity="center_horizontal" />
 
                 <TextView
                     android:id="@+id/news_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="5dp"
                     android:gravity="center_horizontal" />
 
         </LinearLayout>
@@ -76,7 +82,7 @@
             <Button
                 android:id="@+id/share_news"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_gravity="right|center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
@@ -88,13 +94,13 @@
 
     </LinearLayout>
     <ToggleButton
-        android:layout_width="wrap_content"
+        android:layout_width="30dp"
         android:layout_margin="6dp"
         app:layout_anchor="@id/viewA"
         android:checked="false"
         android:background="@drawable/toggle_button_state"
         android:id="@+id/bookmark_button"
         app:layout_anchorGravity="bottom|right|end"
-        android:layout_height="wrap_content" />
+        android:layout_height="36dp" />
 
 </android.support.design.widget.CoordinatorLayout>
