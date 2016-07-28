@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 public class About_Us extends AppCompatActivity implements View.OnClickListener {
 
     String url_to_be_opened="";
@@ -28,14 +30,14 @@ public class About_Us extends AppCompatActivity implements View.OnClickListener 
         saa=(ImageView)findViewById(R.id.saad_image);
         kaabu=(ImageView)findViewById(R.id.kabir_image);
 
-        adi.setImageResource(R.drawable.p1);
-        tanv.setImageResource(R.drawable.p2);
-        shan.setImageResource(R.drawable.p3);
-        piy.setImageResource(R.drawable.p4);
-        nimmo.setImageResource(R.drawable.p5);
-        kaabu.setImageResource(R.drawable.p6);
-        arc.setImageResource(R.drawable.p8);
-        saa.setImageResource(R.drawable.p7);
+
+        Picasso.with(this).load(Constants.aditya_image_url).into(adi);
+        Picasso.with(this).load(Constants.piyush_image_url).into(piy);
+        Picasso.with(this).load(Constants.archit_image_url).into(arc);
+        Picasso.with(this).load(Constants.tanveer_image_url).into(tanv);
+        Picasso.with(this).load(Constants.nimit_image_url).into(nimmo);
+        Picasso.with(this).load(Constants.saad_image_url).into(saa);
+        Picasso.with(this).load(Constants.kaabir_image_url).into(kaabu);
 
         aditya=(ImageButton)findViewById(R.id.aditya_link);
         tanveer=(ImageButton)findViewById(R.id.tanveer_link);
@@ -71,14 +73,12 @@ public class About_Us extends AppCompatActivity implements View.OnClickListener 
         switch (id){
             case R.id.aditya_link:url_to_be_opened="https://github.com/AadityaDev";break;
             case R.id.tanveer_link:url_to_be_opened="https://www.linkedin.com/in/tanveersid01";break;
-            case R.id.archit_link:url_to_be_opened="https://www.linkedin.com/in/archit-gupta-043b0329?trk=nav_responsive_tab_profile_pic"
-            ;break;
+            case R.id.archit_link:url_to_be_opened="https://www.linkedin.com/in/archit-gupta-043b0329?trk=nav_responsive_tab_profile_pic";break;
             case R.id.shanu_link:url_to_be_opened="https://www.linkedin.com/profile/view?id=424674153";break;
             case R.id.nimit_link:url_to_be_opened="https://github.com/nimit95";break;
             case R.id.saad_link:url_to_be_opened="https://github.com/syedsaadh/";break;
             case R.id.kabir_link:url_to_be_opened="https://www.behance.net/kabbu1";break;
             case R.id.piyush_link:url_to_be_opened="https://www.linkedin.com/in/piyush6348";break;
-
         }
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url_to_be_opened));
         startActivity(browserIntent);

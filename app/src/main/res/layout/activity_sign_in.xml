@@ -1,102 +1,108 @@
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="#171717"
-    android:weightSum="10"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical"
+    android:weightSum="10">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="3"
+        android:orientation="vertical"></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
         android:orientation="vertical">
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="2"
-        android:layout_height="wrap_content">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="30sp"
-                android:textColor="@color/white"
-                android:gravity="center"
-                android:text="SignIn"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="20dp"
-                android:textColor="@color/white"
-                android:textSize="25sp"
-                android:text="Rediscover Your Habit of\nReading News"/>
-
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="2"
-        android:layout_height="wrap_content" >
-        <EditText
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="SignIn"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="Rediscover Your Habit of\nReading News"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <EditText
             android:id="@+id/enter_mobile_no_login"
-            android:text="Mobile Number"
-            android:textColor="#888888"
-            android:gravity="center"
-            android:layout_gravity="center_horizontal"/>
-        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:hint="Mobile Number"
+            android:inputType="phone"
+            android:textColor="@color/textColor"
+            android:textColorHint="@color/textColor" />
+
+        <EditText
             android:id="@+id/enter_password_login"
-            android:text="Password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:hint="Password"
+            android:inputType="textPassword"
             android:textColor="#888888"
-            android:gravity="center"
-            android:layout_gravity="center_horizontal"/>
+            android:textColorHint="@color/textColor" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:layout_height="wrap_content">
+        android:orientation="vertical">
+
         <Button
+            android:id="@+id/sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/sign_in"
-            android:text="Sign In"
             android:layout_gravity="center_horizontal"
-            android:background="@drawable/button_prop"/>
+            android:background="@drawable/button_prop"
+            android:text="Sign In" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="10dp"></LinearLayout>
+
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:layout_height="wrap_content">
+        android:orientation="vertical">
 
         <Button
+            android:id="@+id/no_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/no_account"
-            android:text="Don't have an account ?"
-            android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
-            android:background="@null"/>
+            android:background="@null"
+            android:text="Don't have an account ?"
+            android:textColor="@color/white" />
     </LinearLayout>
 </LinearLayout>

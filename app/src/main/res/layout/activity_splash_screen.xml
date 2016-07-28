@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/backgound_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/backgound_layout"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:weightSum="6"
     android:orientation="vertical"
+    android:background="@drawable/splash_screen_background"
+    android:weightSum="6"
     tools:context="com.vizy.newsapp.realread.activities.SplashScreen">
 
     <LinearLayout
@@ -20,51 +17,55 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_weight="3"
         android:orientation="vertical"
-        android:weightSum="2"
-        android:layout_weight="3">
+        android:weightSum="2">
+
         <ImageView
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:background="@drawable/real_read"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:background="@drawable/real_read" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:padding="15dp"
             android:text="Get updated with short video news"
             android:textColor="@color/white"
-            android:padding="15dp"
-            android:textSize="30sp"
-            android:gravity="center"/>
+            android:textSize="30sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <Button
+            android:id="@+id/create_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/create_account"
-            android:text="Create Account"
+            android:layout_gravity="center"
             android:background="@drawable/button_prop"
+            android:gravity="center"
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
-            android:layout_gravity="center"
-            android:gravity="center"/>
+            android:text="Create Account" />
+
         <Button
+            android:id="@+id/login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/login"
-            android:text="Log In"
-            android:textColor="@color/black"
+            android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:background="@drawable/button_prop_login"
+            android:gravity="center"
             android:paddingLeft="70dp"
             android:paddingRight="70dp"
-            android:background="@drawable/button_prop_login"
-            android:layout_gravity="center"
-            android:gravity="center"/>
+            android:text="Log In"
+            android:textColor="@color/black" />
     </LinearLayout>
 
 </LinearLayout>

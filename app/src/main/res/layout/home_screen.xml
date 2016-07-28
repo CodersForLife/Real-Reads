@@ -3,11 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/frame_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -40,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.6"
-            android:background="@android:color/holo_orange_light"
+            android:background="#f1f1f1"
             android:orientation="vertical">
 
 
@@ -49,12 +44,18 @@
                     android:id="@+id/news_heading"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="15dp"
+                    android:padding="5dp"
                     android:gravity="center_horizontal" />
 
                 <TextView
                     android:id="@+id/news_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="5dp"
                     android:gravity="center_horizontal" />
 
         </LinearLayout>
@@ -79,9 +80,9 @@
                 android:layout_weight="1"></LinearLayout>
 
             <Button
-                android:id="@+id/share1"
+                android:id="@+id/share_news"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_gravity="right|center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
@@ -92,122 +93,14 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:clickable="true"
+    <ToggleButton
+        android:layout_width="30dp"
+        android:layout_margin="6dp"
         app:layout_anchor="@id/viewA"
-        app:layout_anchorGravity="bottom|right|end" />
+        android:checked="false"
+        android:background="@drawable/toggle_button_state"
+        android:id="@+id/bookmark_button"
+        app:layout_anchorGravity="bottom|right|end"
+        android:layout_height="36dp" />
 
-
-</android.support.design.widget.CoordinatorLayout><!--<?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/frame_layout"
-    android:background="#000000"
-    android:layout_height="match_parent">
-
-
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="5dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="5dp"
-    tools:context="videoinshorts.vizy.com.videoinshorts.MainActivity">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:weightSum="2"
-        android:background="#f1f1f1"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:id="@+id/view1"
-            android:padding="2dp"
-            android:layout_weight="1"
-            android:layout_height="match_parent">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/image2"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:padding="2dp"
-            android:layout_weight="1"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:padding="5dp"
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/description2"
-            android:gravity="center_horizontal"
-            />
-
-        </LinearLayout>
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@color/share_background"
-            app:fabSize="normal"
-            android:id="@+id/bookmark_floating_button"
-            android:src="@drawable/ic_add_white_48dp"
-            android:layout_height="wrap_content"
-            app:layout_anchor="@id/view1"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="2"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Video by Viz.Y"
-                android:layout_weight="1"
-                android:padding="15dp"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"></LinearLayout>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:id="@+id/share1"
-                android:layout_gravity="right"
-                android:text="Share"
-                android:textColor="@color/white"
-                android:background="@drawable/button_prop"
-                android:layout_margin="10dp"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
-</android.support.v7.widget.CardView>
-
-
-</FrameLayout>
-    </android.support.design.widget.CoordinatorLayout>
--->
+</android.support.design.widget.CoordinatorLayout>

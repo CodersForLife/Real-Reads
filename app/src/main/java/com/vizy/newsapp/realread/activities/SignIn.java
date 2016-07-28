@@ -2,7 +2,6 @@ package com.vizy.newsapp.realread.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,16 +22,15 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.vizy.newsapp.realread.R;
 import com.vizy.newsapp.realread.model.UserSession;
 
-import java.util.HashMap;
 
-public class SignIn extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener {
+public class SignIn extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
 
     Button signIn, noAccount;
     EditText mobileNo, password;
     GoogleApiClient mGoogleApiClient;
     ProgressDialog mProgressDialog;
     private static final int RC_SIGN_IN = 9001;
-    String TAG="MainActivity-Google+SignIn";
+    String TAG = "MainActivity-Google+SignIn";
     GoogleSignInAccount acct;
 
     @Override
@@ -83,31 +81,17 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        final UserSession session=new UserSession(getApplicationContext());
+        final UserSession session = new UserSession(getApplicationContext());
 
-        signIn=(Button)findViewById(R.id.sign_in);
-        noAccount=(Button)findViewById(R.id.no_account);
-        mobileNo=(EditText)findViewById(R.id.enter_mobile_no_login);
-        password=(EditText)findViewById(R.id.enter_password_login);
-
-        /*signIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String phoneNumber=mobileNo.getText().toString();
-                String pass=password.getText().toString();
-                HashMap<String, String> user = session.getUserDetails();
-                if(phoneNumber==user.get(UserSession.KEY_PHONE)&&pass==user.get(UserSession.KEY_PASSWORD)){
-                    Intent toHome=new Intent(SignIn.this, MainActivity.class);
-                    startActivity(toHome);
-                    finish();
-                }
-            }
-        });*/
+        signIn = (Button) findViewById(R.id.sign_in);
+        noAccount = (Button) findViewById(R.id.no_account);
+        mobileNo = (EditText) findViewById(R.id.enter_mobile_no_login);
+        password = (EditText) findViewById(R.id.enter_password_login);
 
         noAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toSignUp=new Intent(SignIn.this, SignUp.class);
+                Intent toSignUp = new Intent(SignIn.this, SignUp.class);
                 startActivity(toSignUp);
                 finish();
             }
@@ -116,12 +100,9 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
         findViewById(R.id.sign_in_button).setOnClickListener(this);
 
 
-        GoogleSignInOptions gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        mGoogleApiClient=new GoogleApiClient.Builder(this)
-                .enableAutoManage(this,this).addApi(Auth.GOOGLE_SIGN_IN_API,gso).build();
-
-      /*  mGoogleApiClient=new GoogleApiClient.Builder(this).enableAutoManage(this,this).addApi(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .addScope(Scopes.PLUS_LOGIN).addScope(Scopes.PLUS_ME).build();*/
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, gso).build();
 
         SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
@@ -133,6 +114,15 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN && data != null) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            handleSignInResult(result);
+        }
+    }
+
     private void handleSignInResult(GoogleSignInResult result) {
 
         Log.d(TAG, "handleSignInResult:" + result.isSuccess());
@@ -140,8 +130,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
             // Signed in successfully, show authenticated UI.
             acct = result.getSignInAccount();
             // mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
-            startActivity(new Intent(SignIn.this,MainActivity.class));
-            finish();
+            updateUI(true);
         } else {
             // Signed out, show unauthenticated UI.
             updateUI(false);
@@ -149,19 +138,19 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
     }
 
     private void updateUI(boolean b) {
-        if(b){
-            Log.e("Sucessfull","Login");
+        if (b) {
+            Log.e("Sucessfull", "Login");
 
-            String nam=acct.getDisplayName();
-            String em=acct.getEmail();
+            String nam = acct.getDisplayName();
+            String em = acct.getEmail();
 
-            Uri image_url =acct.getPhotoUrl();
+            UserSession session = new UserSession(this);
+            session.createLoginSession(nam, em);
 
-            startActivity(new Intent(SignIn.this,MainActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
             finish();
-        }
-        else {
-            Log.e("Unsucessful","error");
+        } else {
+            Log.e(TAG, " Google SignIn error");
         }
     }
 
@@ -169,7 +158,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener,Go
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.sign_in_button:
                 signIn();
                 break;
