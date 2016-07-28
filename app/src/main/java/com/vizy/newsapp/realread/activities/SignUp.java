@@ -12,7 +12,7 @@ import com.vizy.newsapp.realread.model.UserSession;
 
 public class SignUp extends AppCompatActivity {
 
-    EditText mobile, password, confirm_password;
+    EditText mobile, password;
     Button done_signup;
 
     @Override
@@ -20,20 +20,19 @@ public class SignUp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
-        mobile=(EditText)findViewById(R.id.enter_mobile_no);
-        password=(EditText)findViewById(R.id.enter_password);
-        //confirm_password=(EditText)findViewById(R.id.enter_password_again);
-        done_signup=(Button)findViewById(R.id.done_signup);
+        mobile = (EditText) findViewById(R.id.enter_mobile_no);
+        password = (EditText) findViewById(R.id.enter_password);
+        done_signup = (Button) findViewById(R.id.done_signup);
 
         done_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String phoneNumber=mobile.getText().toString();
-                String enterPassword=password.getText().toString();
-                //String confirmPassword=confirm_password.getText().toString();
-                UserSession session=new UserSession(getApplicationContext());
-                session.createLoginSession(phoneNumber,enterPassword);
-                Intent toHome=new Intent(SignUp.this, MainActivity.class);
+                String phoneNumber = mobile.getText().toString();
+                String enterPassword = password.getText().toString();
+
+                UserSession session = new UserSession(getApplicationContext());
+                session.createLoginSession(phoneNumber, enterPassword);
+                Intent toHome = new Intent(SignUp.this, MainActivity.class);
                 startActivity(toHome);
                 finish();
 

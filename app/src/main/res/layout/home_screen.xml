@@ -17,15 +17,14 @@
             android:orientation="horizontal">
 
 
-
-                <ImageView
-                    android:id="@+id/news_image"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:adjustViewBounds="true"
-                    android:padding="2dp"
-                    android:scaleType="fitXY" />
+            <ImageView
+                android:id="@+id/news_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:padding="2dp"
+                android:scaleType="fitXY" />
 
         </LinearLayout>
 
@@ -39,18 +38,17 @@
             android:orientation="vertical">
 
 
+            <TextView
+                android:id="@+id/news_heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal" />
 
-                <TextView
-                    android:id="@+id/news_heading"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal" />
-
-                <TextView
-                    android:id="@+id/news_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal" />
+            <TextView
+                android:id="@+id/news_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal" />
 
         </LinearLayout>
 
@@ -87,14 +85,15 @@
         </LinearLayout>
 
     </LinearLayout>
+
     <ToggleButton
-        android:layout_width="wrap_content"
-        android:layout_margin="6dp"
-        app:layout_anchor="@id/viewA"
-        android:checked="false"
-        android:background="@drawable/toggle_button_state"
         android:id="@+id/bookmark_button"
-        app:layout_anchorGravity="bottom|right|end"
-        android:layout_height="wrap_content" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="6dp"
+        android:background="@drawable/toggle_button_state"
+        android:checked="false"
+        app:layout_anchor="@id/viewA"
+        app:layout_anchorGravity="bottom|right|end" />
 
 </android.support.design.widget.CoordinatorLayout>

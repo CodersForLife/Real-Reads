@@ -4,81 +4,87 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#171717"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:weightSum="4"
-    android:orientation="vertical"
     tools:context="com.vizy.newsapp.realread.activities.SignUp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"></LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
             android:text="Create Your Account"
             android:textColor="@color/white"
-            android:textSize="30sp"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center"/>
+            android:textSize="30sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Get started absolutely free \nand rediscover your habit of reading \nnews"
-            android:textColor="@color/white"
-            android:textSize="20sp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:gravity="center"
-            android:layout_gravity="center_horizontal"/>
+            android:text="Get started absolutely free \nand rediscover your habit of reading \nnews"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical">
+
         <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/enter_mobile_no"
-            android:hint="Mobile Number"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/white"
-            android:inputType="number"
-            android:textColorHint="#888888"/>
-        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/enter_password"
-            android:hint="Password"
             android:layout_gravity="center_horizontal"
+            android:hint="Mobile Number"
+            android:inputType="number"
             android:textColor="@color/white"
+            android:textColorHint="#888888" />
+
+        <EditText
+            android:id="@+id/enter_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:hint="Password"
             android:inputType="textPassword"
-            android:textColorHint="#888888"/>
+            android:textColor="@color/white"
+            android:textColorHint="#888888" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical">
+
         <Button
+            android:id="@+id/done_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/done_signup"
+            android:layout_gravity="center_horizontal"
             android:background="@drawable/button_prop"
-            android:text="Done"
             android:gravity="center"
-            android:layout_gravity="center_horizontal"/>
+            android:text="Done" />
     </LinearLayout>
 
 </LinearLayout>

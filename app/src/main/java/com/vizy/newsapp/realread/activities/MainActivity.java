@@ -12,10 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ToggleButton;
-
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -38,7 +35,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private final String TAG = this.getClass().getSimpleName();
-    private Button share;
     private String json = "";
     private CarouselLayoutManager carouselLayoutManager;
     private RecyclerView newsCardList;
@@ -54,32 +50,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-      /*  newsShare=(Button)findViewById(R.id.share_news);
-        bookmarkButton=(ToggleButton)findViewById(R.id.bookmark_button);
-
-        newsShare.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
-        if(bookmarkButton.isChecked()){
-
-        }
-
-        else{
-
-        }*/
         newsList = new ArrayList<Article>();
         newsCardList = (RecyclerView) findViewById(R.id.news_list);
         carouselLayoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL);
         carouselLayoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
 
-        handler=new Handler(new Handler.Callback() {
+        handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message message) {
-              //  articleAdapter.notifyDataSetChanged();
+                //  articleAdapter.notifyDataSetChanged();
 
 
                 articleAdapter = new ArticleAdapter(newsList, MainActivity.this);
@@ -90,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
 
 
         OkHttpClient client = new OkHttpClient();
@@ -127,13 +105,12 @@ public class MainActivity extends AppCompatActivity {
                             article.setUrl(jsonObject.getString("url"));
                             article.setUrlToImage(jsonObject.getString("urlToImage"));
                             newsList.add(article);
-                            Log.e("newsList",newsList.size()+"");
+                            Log.e("newsList", newsList.size() + "");
                         }
 
 
-
                     } catch (Exception e) {
-                    //    e.printStackTrace();
+                        //    e.printStackTrace();
                     }
 
 
@@ -144,8 +121,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-
 
 
     }

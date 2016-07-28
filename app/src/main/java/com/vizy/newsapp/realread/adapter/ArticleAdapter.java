@@ -1,6 +1,7 @@
 package com.vizy.newsapp.realread.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,6 +43,26 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         holder.title.setText(article.getTitle());
         holder.description.setText(article.getDescription());
         Picasso.with(context).load(article.getUrlToImage()).into(holder.newsImage);
+
+        holder.share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = "Here is the share content body";
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, article.getTitle());
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, article.getDescription());
+                context.startActivity(Intent.createChooser(sharingIntent, "Share via"));
+
+            }
+        });
+
+        if(holder.bookmarkButton.isChecked()){
+
+        }
+        else {
+
+        }
     }
 
     @Override
@@ -62,11 +83,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
             newsImage = (ImageView) itemView.findViewById(R.id.news_image);
             title = (TextView) itemView.findViewById(R.id.news_heading);
             description = (TextView) itemView.findViewById(R.id.news_description);
-          //  share = (Button) itemView.findViewById(R.id.share1);
+            share = (Button) itemView.findViewById(R.id.share_news);
             bookmarkButton=(ToggleButton)itemView.findViewById(R.id.bookmark_button);
             bookmarkButton.setText(null);
             bookmarkButton.setTextOn(null);
             bookmarkButton.setTextOff(null);
+
+
         }
     }
 }
