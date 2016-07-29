@@ -68,7 +68,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
+        android:layout_weight="4"
         android:orientation="vertical">
 
         <Button
@@ -76,18 +76,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp"
             android:background="@drawable/button_prop"
             android:text="Sign In" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="10dp"></LinearLayout>
-
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
+            android:layout_marginTop="5dp"
             android:layout_width="wrap_content"
+            android:layout_marginBottom="5dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
+
+        <com.facebook.login.widget.LoginButton
+            android:layout_width="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:id="@+id/fb_login"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/number_confirmation"
+            android:layout_marginTop="5dp"
+            android:text="Phone Number login"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
