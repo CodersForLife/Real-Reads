@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
+
 android {
     signingConfigs {
         debug_config {
@@ -55,6 +56,7 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:4.+'
     compile 'com.facebook.android:account-kit-sdk:4.+'
     compile 'com.google.android.gms:play-services-auth:9.0.0'
+    compile 'net.simonvt.schematic:schematic:0.6.3'
 }
 
 

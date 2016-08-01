@@ -1,23 +1,28 @@
 package com.vizy.newsapp.realread.activities;
 
+import android.app.LoaderManager;
 import android.content.ActivityNotFoundException;
+import android.content.ContentValues;
+import android.content.CursorLoader;
 import android.content.Intent;
+import android.content.Loader;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Button;
+
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 import com.vizy.newsapp.realread.About_Us;
+import com.vizy.newsapp.realread.DataBase.QuoteProvider;
 import com.vizy.newsapp.realread.R;
 import com.vizy.newsapp.realread.RealReadAPI;
 import com.vizy.newsapp.realread.adapter.ArticleAdapter;
@@ -32,7 +37,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private final String TAG = this.getClass().getSimpleName();
     private String json = "";
@@ -41,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
     private List<Article> newsList;
     private ArticleAdapter articleAdapter;
     private String news;
-    private Handler handler;
 
 
     @Override
@@ -55,20 +59,18 @@ public class MainActivity extends AppCompatActivity {
         carouselLayoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL);
         carouselLayoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
 
-        handler = new Handler(new Handler.Callback() {
+
+     /*   handler = new Handler(new Handler.Callback() {
             @Override
             public boolean handleMessage(Message message) {
-                //  articleAdapter.notifyDataSetChanged();
-
 
                 articleAdapter = new ArticleAdapter(newsList, MainActivity.this);
-
                 newsCardList.setLayoutManager(carouselLayoutManager);
                 newsCardList.setHasFixedSize(true);
                 newsCardList.setAdapter(articleAdapter);
                 return false;
             }
-        });
+        });*/
 
 
         OkHttpClient client = new OkHttpClient();
@@ -92,12 +94,22 @@ public class MainActivity extends AppCompatActivity {
                         news = arr.toString();
 
 
+
                         JSONArray newsArray = new JSONArray(news);
 
                         for (int i = 0; i < newsArray.length(); i++) {
+
+                            int presence = 1;
                             JSONObject jsonObject = newsArray.getJSONObject(i);
 
-                            Article article = new Article();
+                            String newsTitle = jsonObject.getString("title");
+                            String newsDescription = jsonObject.getString("description");
+                            String newsAuthor = jsonObject.getString("author");
+                            String newsPublishedAt = jsonObject.getString("publishedAt");
+                            String newsUrl = jsonObject.getString("url");
+                            String newsUrlToImage = jsonObject.getString("urlToImage");
+
+                         /*   Article article = new Article();
                             article.setAuthor(jsonObject.getString("author"));
                             article.setDescription(jsonObject.getString("description"));
                             article.setPublishedAt(jsonObject.getString("publishedAt"));
@@ -105,7 +117,27 @@ public class MainActivity extends AppCompatActivity {
                             article.setUrl(jsonObject.getString("url"));
                             article.setUrlToImage(jsonObject.getString("urlToImage"));
                             newsList.add(article);
-                            Log.e("newsList", newsList.size() + "");
+                            Log.e("newsList", newsList.size() + "");*/
+
+                            Cursor c=getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,null,null,null,null);
+
+                           do {
+
+                                if (newsTitle.equalsIgnoreCase(c.getString(c.getColumnIndex("newsTitle"))))
+                                {
+                                    presence = 0;
+                                    break;
+                                }
+                            } while (c.moveToNext());
+
+                            if (presence == 1){
+                                ContentValues contentValues=new ContentValues();
+                                contentValues.put("newsTitle",newsTitle);
+                                contentValues.put("newsDescription",newsDescription);
+
+                                getContentResolver().insert(QuoteProvider.Quotes.CONTENT_URI,contentValues);
+                                Log.e(TAG,newsTitle+newsDescription);
+                            }
                         }
 
 
@@ -113,10 +145,11 @@ public class MainActivity extends AppCompatActivity {
                         //    e.printStackTrace();
                     }
 
+                    getLoaderManager().initLoader(0, null, MainActivity.this);
 
-                    Message msg = handler.obtainMessage();
-                    msg.sendToTarget();
-
+                }
+                else {
+                    getLoaderManager().initLoader(0, null, MainActivity.this);
                 }
 
             }
@@ -158,4 +191,31 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
+        CursorLoader cursorLoader=new CursorLoader(this,QuoteProvider.Quotes.CONTENT_URI,null,null,null,null);
+        return cursorLoader;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        int ct=cursor.getCount();
+        cursor.moveToFirst();
+        for(int i=0;i<ct;i++){
+            Article article = new Article();
+            article.setTitle(cursor.getString(cursor.getColumnIndex("news_title")));
+            article.setDescription(cursor.getString(cursor.getColumnIndex("news_description")));
+            newsList.add(article);
+            cursor.moveToNext();
+        }
+        Log.e(TAG,newsList.size()+"");
+        articleAdapter = new ArticleAdapter(newsList, MainActivity.this);
+        newsCardList.setLayoutManager(carouselLayoutManager);
+        newsCardList.setHasFixedSize(true);
+        newsCardList.setAdapter(articleAdapter);
+        articleAdapter.notifyDataSetChanged();
+    }
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+    }
 }
