@@ -1,4 +1,4 @@
-package com.vizy.newsapp.realread.DataBase;
+package com.vizy.newsapp.realread.database;
 
 import net.simonvt.schematic.annotation.AutoIncrement;
 import net.simonvt.schematic.annotation.DataType;

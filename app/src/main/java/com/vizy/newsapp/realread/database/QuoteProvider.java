@@ -1,6 +1,8 @@
-package com.vizy.newsapp.realread.DataBase;
+package com.vizy.newsapp.realread.database;
 
 import android.net.Uri;
+
+import com.vizy.newsapp.realread.database.DatabseDefinition;
 
 import net.simonvt.schematic.annotation.ContentProvider;
 import net.simonvt.schematic.annotation.ContentUri;
