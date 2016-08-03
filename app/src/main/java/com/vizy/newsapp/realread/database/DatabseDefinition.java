@@ -1,7 +1,5 @@
 package com.vizy.newsapp.realread.database;
 
-import com.vizy.newsapp.realread.database.DatabseColumns;
-
 import net.simonvt.schematic.annotation.Database;
 import net.simonvt.schematic.annotation.Table;
 

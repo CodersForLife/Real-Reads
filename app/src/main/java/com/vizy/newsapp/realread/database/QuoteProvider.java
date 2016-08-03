@@ -2,8 +2,6 @@ package com.vizy.newsapp.realread.database;
 
 import android.net.Uri;
 
-import com.vizy.newsapp.realread.database.DatabseDefinition;
-
 import net.simonvt.schematic.annotation.ContentProvider;
 import net.simonvt.schematic.annotation.ContentUri;
 import net.simonvt.schematic.annotation.InexactContentUri;
@@ -11,7 +9,7 @@ import net.simonvt.schematic.annotation.TableEndpoint;
 
 @ContentProvider(authority = QuoteProvider.AUTHORITY,database = DatabseDefinition.class)
 public class QuoteProvider {
-    public static final String AUTHORITY = "com.vizy.newsapp.realread.DataBase";
+    public static final String AUTHORITY = "com.vizy.newsapp.realread.database.QuoteProvider";
 
     static final Uri BASE_CONTENT_URI = Uri.parse("content://" + AUTHORITY);
 
