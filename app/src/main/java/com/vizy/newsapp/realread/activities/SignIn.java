@@ -100,21 +100,21 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
 
         final UserSession session = new UserSession(getApplicationContext());
 
-        signIn = (Button) findViewById(R.id.sign_in);
+        /*signIn = (Button) findViewById(R.id.sign_in);
         noAccount = (Button) findViewById(R.id.no_account);
         mobileNo = (EditText) findViewById(R.id.enter_mobile_no_login);
-        password = (EditText) findViewById(R.id.enter_password_login);
+        password = (EditText) findViewById(R.id.enter_password_login);*/
 
-        noAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent toSignUp = new Intent(SignIn.this, SignUp.class);
-                startActivity(toSignUp);
-                finish();
-            }
-        });
+//        noAccount.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent toSignUp = new Intent(SignIn.this, SignUp.class);
+//                startActivity(toSignUp);
+//                finish();
+//            }
+//        });
 
-        findViewById(R.id.sign_in_button).setOnClickListener(this);
+//        findViewById(R.id.sign_in_button).setOnClickListener(this);
 
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
@@ -202,16 +202,9 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
                             loginResult.getAuthorizationCode().substring(0,10));
                 }
 
-                // If you have an authorization code, retrieve it from
-                // loginResult.getAuthorizationCode()
-                // and pass it to your server and exchange it for an access token.
-
-                // Success! Start your next activity...
                 startActivity(new Intent(SignIn.this,MainActivity.class));
                 finish();
             }
-
-            // Surface the result to your user in an appropriate way.
             Toast.makeText(
                     this,
                     toastMessage,

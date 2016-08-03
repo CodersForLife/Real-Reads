@@ -23,7 +23,7 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
 
         createAccount = (Button) findViewById(R.id.create_account);
-        login = (Button) findViewById(R.id.login);
+        //login = (Button) findViewById(R.id.login);
 
 
         if (session.isLoggedIn()) {
@@ -37,20 +37,20 @@ public class SplashScreen extends AppCompatActivity {
         createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toCreateAccount = new Intent(SplashScreen.this, SignUp.class);
+                Intent toCreateAccount = new Intent(SplashScreen.this, SignIn.class);
                 startActivity(toCreateAccount);
                 finish();
             }
         });
 
-        login.setOnClickListener(new View.OnClickListener() {
+        /*login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent toLogin = new Intent(SplashScreen.this, SignIn.class);
                 startActivity(toLogin);
                 finish();
             }
-        });
+        });*/
     }
 
 

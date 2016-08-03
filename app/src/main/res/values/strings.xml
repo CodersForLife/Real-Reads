@@ -4,4 +4,11 @@
     <string name="facebook_app_id">320751784929226</string>
     <string name="fb_login_protocol_scheme">fb320751784929226</string>
     <string name="ak_login_protocol_scheme">ak320751784929226</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="onBoarding_images"></string-array>
+    <string-array name="onBoarding_colors"></string-array>
+    <string-array name="onBoarding_headings"></string-array>
+    <string-array name="onBoarding_sub_headings"></string-array>
 </resources>
