@@ -39,6 +39,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:visibility="gone"
+                android:id="@+id/profile_name_textview"
                 android:layout_height="wrap_content" />
             <EditText
                 android:layout_width="match_parent"
@@ -70,6 +71,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:visibility="gone"
+                android:id="@+id/profile_phone_textview"
                 android:layout_height="wrap_content" />
             <EditText
                 android:layout_width="match_parent"
@@ -101,6 +103,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:visibility="gone"
+                android:id="@+id/profile_email_textview"
                 android:layout_height="wrap_content" />
             <EditText
                 android:layout_width="match_parent"
