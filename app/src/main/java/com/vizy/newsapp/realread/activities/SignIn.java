@@ -15,6 +15,8 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.accountkit.AccessToken;
 import com.facebook.accountkit.AccountKit;
 import com.facebook.accountkit.AccountKitLoginResult;
@@ -34,6 +36,11 @@ import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.vizy.newsapp.realread.R;
 import com.vizy.newsapp.realread.model.UserSession;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Arrays;
 
 
 public class SignIn extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
@@ -139,7 +146,8 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
 
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) findViewById(R.id.fb_login);
-        loginButton.setReadPermissions("email");
+        loginButton.setReadPermissions(Arrays.asList(
+                "public_profile", "email"));
         // If using in a fragment
         //  loginButton.setActivi(this);
         // Other app specific specialization
@@ -155,6 +163,29 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
             @Override
             public void onSuccess(LoginResult loginResult) {
                 // App code
+
+                GraphRequest graphRequest=GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        Log.e(TAG,response.toString());
+                        try {
+                            String email=response.getJSONObject().getString("email");
+                            String fbname=response.getJSONObject().getString("first_name");
+
+                            UserSession session = new UserSession(SignIn.this);
+                            session.googleLoginSession(fbname, email);
+                            Log.e("fb login Result",email+" "+fbname);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id,email,first_name,last_name");
+                graphRequest.setParameters(parameters);
+                graphRequest.executeAsync();
+
                 startActivity(new Intent(SignIn.this,MainActivity.class));
                 finish();
             }
@@ -200,6 +231,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
                     toastMessage = String.format(
                             "Success:%s...",
                             loginResult.getAuthorizationCode().substring(0,10));
+
                 }
 
                 startActivity(new Intent(SignIn.this,MainActivity.class));
@@ -236,7 +268,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
             String em = acct.getEmail();
 
             UserSession session = new UserSession(this);
-            session.createLoginSession(nam, em);
+            session.googleLoginSession(nam, em);
 
             startActivity(new Intent(this, MainActivity.class));
             finish();

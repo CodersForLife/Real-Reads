@@ -70,7 +70,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, article.getTitle() + "\n\n");
                         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, article.getDescription());
 
-                        context.startActivity(Intent.createChooser(sharingIntent, "Share via"));
+                        context.startActivity(Intent.createChooser(sharingIntent, "Share via").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
                     }
                 });

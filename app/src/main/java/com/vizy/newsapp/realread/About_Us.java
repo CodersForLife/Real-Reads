@@ -18,12 +18,11 @@ public class About_Us extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about_us);
 
-        ImageButton aditya,tanveer,shanu,archit,nimit,piyush,saad,kaabir,tanveer_mobile;
-        ImageView adi,tanv,shan,arc,nimmo,piy,saa,kaabu;
+        ImageButton aditya,tanveer,archit,nimit,piyush,saad,kaabir,tanveer_mobile;
+        ImageView adi,tanv,arc,nimmo,piy,saa,kaabu;
 
         adi=(ImageView)findViewById(R.id.aditya_image);
         tanv=(ImageView)findViewById(R.id.tanveer_image);
-        shan=(ImageView)findViewById(R.id.shanu_image);
         arc=(ImageView)findViewById(R.id.archit_image);
         nimmo=(ImageView)findViewById(R.id.nimit_image);
         piy=(ImageView)findViewById(R.id.piyush_image);
@@ -41,7 +40,6 @@ public class About_Us extends AppCompatActivity implements View.OnClickListener 
 
         aditya=(ImageButton)findViewById(R.id.aditya_link);
         tanveer=(ImageButton)findViewById(R.id.tanveer_link);
-        shanu=(ImageButton)findViewById(R.id.shanu_link);
         archit=(ImageButton)findViewById(R.id.archit_link);
         nimit=(ImageButton)findViewById(R.id.nimit_link);
         piyush=(ImageButton)findViewById(R.id.piyush_link);
@@ -51,7 +49,6 @@ public class About_Us extends AppCompatActivity implements View.OnClickListener 
 
         aditya.setOnClickListener(this);
         tanveer.setOnClickListener(this);
-        shanu.setOnClickListener(this);
         archit.setOnClickListener(this);
         nimit.setOnClickListener(this);
         piyush.setOnClickListener(this);
@@ -74,7 +71,6 @@ public class About_Us extends AppCompatActivity implements View.OnClickListener 
             case R.id.aditya_link:url_to_be_opened="https://github.com/AadityaDev";break;
             case R.id.tanveer_link:url_to_be_opened="https://www.linkedin.com/in/tanveersid01";break;
             case R.id.archit_link:url_to_be_opened="https://www.linkedin.com/in/archit-gupta-043b0329?trk=nav_responsive_tab_profile_pic";break;
-            case R.id.shanu_link:url_to_be_opened="https://www.linkedin.com/profile/view?id=424674153";break;
             case R.id.nimit_link:url_to_be_opened="https://github.com/nimit95";break;
             case R.id.saad_link:url_to_be_opened="https://github.com/syedsaadh/";break;
             case R.id.kabir_link:url_to_be_opened="https://www.behance.net/kabbu1";break;

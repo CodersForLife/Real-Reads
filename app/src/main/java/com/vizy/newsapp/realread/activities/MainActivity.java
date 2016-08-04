@@ -203,14 +203,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         progressBar.setVisibility(View.INVISIBLE);
         int ct = cursor.getCount();
-        cursor.moveToFirst();
+        cursor.moveToLast();
         for (int i = 0; i < ct; i++) {
             Article article = new Article();
             article.setTitle(cursor.getString(cursor.getColumnIndex("newsTitle")));
             article.setDescription(cursor.getString(cursor.getColumnIndex("newsDescription")));
             article.setUrlToImage(cursor.getString(cursor.getColumnIndex("newsImageUrl")));
             newsList.add(article);
-            cursor.moveToNext();
+            cursor.moveToPrevious();
         }
         Log.e(TAG, newsList.size() + "");
         articleAdapter = new ArticleAdapter(newsList, context);

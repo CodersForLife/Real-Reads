@@ -19,8 +19,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/CustomTheme">
-
-
         <meta-data
             android:name="com.facebook.accountkit.ApplicationName"
             android:value="@string/app_name" />
@@ -42,7 +40,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.SignIn">
-
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
@@ -51,7 +48,6 @@
 
                 <data android:scheme="@string/fb_login_protocol_scheme" />
                 <data android:scheme="@string/ak_login_protocol_scheme" />
-
             </intent-filter>
         </activity>
         <activity android:name=".activities.SignUp" />
@@ -59,9 +55,11 @@
         <activity android:name=".About_Us" />
 
         <provider
+            android:name=".database.generated.QuoteProvider"
             android:authorities="com.vizy.newsapp.realread.database.QuoteProvider"
-            android:name="com.vizy.newsapp.realread.database.generated.QuoteProvider"
             android:exported="false" />
+
+        <activity android:name=".activities.MyProfile"></activity>
     </application>
 
 </manifest>
