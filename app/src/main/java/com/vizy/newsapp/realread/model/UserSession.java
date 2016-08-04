@@ -19,6 +19,10 @@ public class UserSession {
 
     private static final String IS_LOGIN = "IsLoggedIn";
 
+    public static final String KEY_NAME = "name";
+
+    public static final String KEY_EMAIL = "email";
+
     public static final String KEY_PHONE = "phone";
 
     public static final String KEY_PASSWORD = "password";
@@ -36,6 +40,14 @@ public class UserSession {
         editor.putString(KEY_PASSWORD, password);
         editor.commit();
     }
+
+    public void googleLoginSession(String name, String email){
+        editor.putBoolean(IS_LOGIN, true);
+        editor.putString(KEY_NAME, name);
+        editor.putString(KEY_EMAIL, email);
+        editor.commit();
+    }
+
 
     /*public void checkLogin(){
         if(!this.isLoggedIn()){
