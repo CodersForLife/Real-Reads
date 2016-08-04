@@ -66,8 +66,8 @@ public class UserSession {
 
     public HashMap<String, String> getUserDetails(){
         HashMap<String, String> user = new HashMap<String, String>();
-        user.put(KEY_PHONE, pref.getString(KEY_PHONE, null));
-        user.put(KEY_PASSWORD, pref.getString(KEY_PASSWORD, null));
+        user.put(KEY_NAME, pref.getString(KEY_NAME, null));
+        user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));
         return user;
     }
 
