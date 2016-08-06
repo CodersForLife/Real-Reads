@@ -59,7 +59,8 @@
             android:authorities="com.vizy.newsapp.realread.database.QuoteProvider"
             android:exported="false" />
 
-        <activity android:name=".activities.MyProfile"></activity>
+        <activity android:name=".activities.MyProfile" />
+        <activity android:name=".activities.Favourites"></activity>
     </application>
 
 </manifest>
