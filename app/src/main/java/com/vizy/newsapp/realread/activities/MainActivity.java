@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         switch (item.getItemId()) {
 
             case R.id.favourites:
-                Intent j=new Intent(MainActivity.this,Favourites.class);
+                Intent j = new Intent(MainActivity.this, Favourites.class);
                 startActivity(j);
                 return true;
             case R.id.about_us:

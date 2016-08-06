@@ -36,14 +36,14 @@ public class Favourites extends AppCompatActivity implements LoaderManager.Loade
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
-        context=getApplicationContext();
+        context = getApplicationContext();
 
         progressBar = (ProgressBar) findViewById(R.id.favourite_progress_bar);
         newsList = new ArrayList<Article>();
         newsCardList = (RecyclerView) findViewById(R.id.favourite_news_list);
         carouselLayoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL);
         carouselLayoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
-        getLoaderManager().initLoader(0,null,this);
+        getLoaderManager().initLoader(0, null, this);
     }
 
     @Override
