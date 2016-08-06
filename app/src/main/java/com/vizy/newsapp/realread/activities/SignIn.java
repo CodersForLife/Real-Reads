@@ -169,11 +169,12 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
                     public void onCompleted(JSONObject object, GraphResponse response) {
                         Log.e(TAG,response.toString());
                         try {
+                            String id=response.getJSONObject().getString("id");
                             String email=response.getJSONObject().getString("email");
                             String fbname=response.getJSONObject().getString("first_name");
 
                             UserSession session = new UserSession(SignIn.this);
-                            session.googleLoginSession(fbname, email);
+                            session.facebookLoginSession(fbname, email,id);
                             Log.e("fb login Result",email+" "+fbname);
 
                         } catch (Exception e) {
@@ -266,6 +267,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
 
             String nam = acct.getDisplayName();
             String em = acct.getEmail();
+            String userUrl=acct.getPhotoUrl().toString();
 
             UserSession session = new UserSession(this);
             session.googleLoginSession(nam, em);

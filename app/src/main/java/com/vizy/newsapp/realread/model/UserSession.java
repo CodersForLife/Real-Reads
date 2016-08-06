@@ -27,6 +27,8 @@ public class UserSession {
 
     public static final String KEY_PASSWORD = "password";
 
+    public static final String KEY_ID = "id";
+
     public UserSession(Context context){
         this.context = context;
         pref = context.getSharedPreferences(PREF_NAME, PRIVATE_MODE);
@@ -45,6 +47,15 @@ public class UserSession {
         editor.putBoolean(IS_LOGIN, true);
         editor.putString(KEY_NAME, name);
         editor.putString(KEY_EMAIL, email);
+        editor.commit();
+    }
+
+
+    public void facebookLoginSession(String name, String email,String id){
+        editor.putBoolean(IS_LOGIN, true);
+        editor.putString(KEY_NAME, name);
+        editor.putString(KEY_EMAIL, email);
+        editor.putString(KEY_ID,id);
         editor.commit();
     }
 
@@ -68,6 +79,7 @@ public class UserSession {
         HashMap<String, String> user = new HashMap<String, String>();
         user.put(KEY_NAME, pref.getString(KEY_NAME, null));
         user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));
+        user.put(KEY_ID, pref.getString(KEY_ID,null));
         return user;
     }
 

@@ -1,7 +1,9 @@
 package com.vizy.newsapp.realread.adapter;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -20,6 +22,8 @@ import android.widget.ToggleButton;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 import com.vizy.newsapp.realread.R;
+import com.vizy.newsapp.realread.database.DatabseColumns;
+import com.vizy.newsapp.realread.database.QuoteProvider;
 import com.vizy.newsapp.realread.model.Article;
 
 import java.util.ArrayList;
@@ -97,11 +101,17 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         });
 
 
-        if (holder.bookmarkButton.isChecked()) {
+     /*   if (holder.bookmarkButton.isChecked()) {
+            Cursor c=context.getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,new String[]{DatabseColumns.BOOKMARK},
+                    DatabseColumns.TITLE + " = ?",new String[]{article.getTitle()},null);
+            ContentValues contentValues=new ContentValues();
+            contentValues.put("newsBookmark",1);
 
+            context.getContentResolver().update(QuoteProvider.Quotes.CONTENT_URI,contentValues,
+                    DatabseColumns.TITLE + " = ?",new String[]{article.getTitle());
         } else {
 
-        }
+        }*/
     }
 
     @Override

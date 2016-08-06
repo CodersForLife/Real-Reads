@@ -18,4 +18,7 @@ public class DatabseColumns {
 
     @DataType(DataType.Type.TEXT) @NotNull
     public static final String URL = "newsImageUrl";
+
+    @DataType(DataType.Type.INTEGER)
+    public static final String BOOKMARK="newsBookmark";
 }
