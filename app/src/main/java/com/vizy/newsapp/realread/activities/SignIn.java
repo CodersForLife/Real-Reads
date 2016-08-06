@@ -234,6 +234,8 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
                             loginResult.getAuthorizationCode().substring(0,10));
 
                 }
+                UserSession session = new UserSession(getApplicationContext());
+
 
                 startActivity(new Intent(SignIn.this,MainActivity.class));
                 finish();

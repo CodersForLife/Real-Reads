@@ -169,6 +169,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
+            case R.id.favourites:
+                Intent j=new Intent(MainActivity.this,Favourites.class);
+                startActivity(j);
+                return true;
             case R.id.about_us:
                 Intent i = new Intent(context, About_Us.class);
                 startActivity(i);

@@ -47,7 +47,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     }
 
     @Override
-    public void onBindViewHolder(final ArticleViewHolder holder, int position) {
+    public void onBindViewHolder(final ArticleViewHolder holder, final int position) {
         final Article article = articleList.get(position);
         holder.title.setText(article.getTitle());
         holder.description.setText(article.getDescription());
@@ -101,17 +101,42 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         });
 
 
-     /*   if (holder.bookmarkButton.isChecked()) {
-            Cursor c=context.getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,new String[]{DatabseColumns.BOOKMARK},
-                    DatabseColumns.TITLE + " = ?",new String[]{article.getTitle()},null);
-            ContentValues contentValues=new ContentValues();
-            contentValues.put("newsBookmark",1);
+        holder.bookmarkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.bookmarkButton.isChecked()) {
 
-            context.getContentResolver().update(QuoteProvider.Quotes.CONTENT_URI,contentValues,
-                    DatabseColumns.TITLE + " = ?",new String[]{article.getTitle());
-        } else {
+                    holder.bookmarkButton.setBackgroundResource(R.drawable.ic_bookmark_selected_24dp);
+                    ContentValues contentValues=new ContentValues();
+                    contentValues.put("newsBookmark","1");
 
-        }*/
+                  context.getContentResolver().update(QuoteProvider.Quotes.CONTENT_URI,contentValues,
+                           DatabseColumns.TITLE + " = ?",new String[]{article.getTitle()});
+
+
+                   /*  Cursor c=context.getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,new String[]{DatabseColumns.TITLE,DatabseColumns.BOOKMARK},
+                            DatabseColumns.TITLE + " = ?",new String[]{article.getTitle()},null);
+                    c.moveToFirst();
+
+                   Log.e("Checked"+c.getString(c.getColumnIndex("newsTitle")),c.getInt(c.getColumnIndex("newsBookmark"))+"");*/
+                   // Log.e(article.getTitle(),""+c.getCount());
+
+
+                } else {
+                    holder.bookmarkButton.setBackgroundResource(R.drawable.ic_bookmark_unselected_24dp);
+                    ContentValues contentValues=new ContentValues();
+                    contentValues.put("newsBookmark","1");
+
+                    context.getContentResolver().update(QuoteProvider.Quotes.CONTENT_URI,contentValues,
+                            DatabseColumns.TITLE + " = ?",new String[]{article.getTitle()});
+                  /*  Cursor c=context.getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,new String[]{DatabseColumns.TITLE,DatabseColumns.BOOKMARK},
+                            DatabseColumns.TITLE + " = ?",new String[]{article.getTitle()},null);
+                    c.moveToFirst();
+                    Log.e("Not Checked"+c.getString(c.getColumnIndex("newsTitle")),c.getInt(c.getColumnIndex("newsBookmark"))+"");*/
+                }
+            }
+        });
+
     }
 
     @Override
