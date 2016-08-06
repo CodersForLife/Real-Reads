@@ -186,6 +186,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                             Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName())));
                 }
                 return true;
+            case R.id.profile:
+                Intent intent = new Intent(context, MyProfile.class);
+                startActivity(intent);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

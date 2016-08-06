@@ -40,39 +40,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:weightSum="4"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:weightSum="4">
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_button"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_horizontal" />
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/sign_in_button"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                style="@style/FacebookLoginButton"
+                android:padding="5dp" />
 
-        <com.facebook.login.widget.LoginButton
-            android:layout_width="300dp"
-            android:id="@+id/fb_login"
-            android:paddingTop="10dp"
-            android:paddingBottom="@dimen/dimen_10dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/size_20dp"
-            android:layout_height="30dp" />
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/fb_login"
+                android:layout_width="280dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp"
+                android:layout_marginTop="@dimen/size_20dp"
+                style="@style/FacebookLoginButton"/>
+
         <TextView
             android:id="@+id/no_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="@null"
             android:layout_marginTop="50dp"
+            android:background="@null"
             android:text="Don't have an account ?"
             android:textColor="@color/white" />
+
         <Button
-            android:layout_width="300dp"
-            android:layout_gravity="center"
             android:id="@+id/number_confirmation"
+            android:layout_width="300dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:text="Login with phone number"
             android:background="@drawable/signin_buttons"
-            android:layout_height="45dp" />
+            android:text="Login with phone number" />
     </LinearLayout>
 </LinearLayout>

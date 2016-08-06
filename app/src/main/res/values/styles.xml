@@ -35,4 +35,9 @@
         <item name="com_accountkit_input_border_color">?attr/com_accountkit_primary_color</item>
     </style>
 
+    <style name="FacebookLoginButton">
+        <item name="android:background">@drawable/layout_shape</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
 </resources>
