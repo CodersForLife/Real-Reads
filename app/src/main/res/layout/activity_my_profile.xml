@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#171717"
     android:orientation="vertical"
-    android:weightSum="4">
+    android:weightSum="3">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:id="@+id/profile_pic"
             android:src="@mipmap/ic_launcher"
-            android:padding="@dimen/dimen_10dp"
+            android:padding="@dimen/size_20dp"
             android:layout_height="match_parent" />
     </LinearLayout>
 
@@ -25,34 +25,33 @@
         android:layout_weight="1"
         android:layout_marginTop="@dimen/dimen_10dp"
         android:weightSum="2"
+        android:layout_gravity="center_horizontal"
         android:padding="@dimen/dimen_10dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:text="Name"
+            android:layout_width="wrap_content"
+            android:text="NAME:"
             android:textColor="@color/white"
             android:textSize="@dimen/size_20dp"
-            android:paddingLeft="@dimen/dimen_10dp"
+            android:padding="@dimen/size_20dp"
+            android:layout_gravity="center"
             android:layout_height="wrap_content" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
-                android:visibility="gone"
-                android:textColor="@color/white"
+                android:visibility="visible"
+                android:textColor="@color/black"
+                android:gravity="center"
                 android:textSize="@dimen/size_20dp"
+                android:background="@drawable/corner_radius"
+                android:padding="@dimen/dimen_10dp"
                 android:id="@+id/profile_name_textview"
                 android:layout_height="wrap_content" />
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/profile_name"
-                />
         </LinearLayout>
     </LinearLayout>
 
@@ -62,68 +61,31 @@
         android:layout_weight="1"
         android:weightSum="2"
         android:padding="@dimen/dimen_10dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_weight="1"
+            android:layout_width="wrap_content"
             android:textSize="@dimen/size_20dp"
+            android:text="EMAIL:"
             android:textColor="@color/white"
-            android:paddingLeft="@dimen/dimen_10dp"
-            android:text="Phone Number"
+            android:layout_gravity="center_horizontal"
+            android:padding="@dimen/dimen_10dp"
             android:layout_height="wrap_content" />
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
             <TextView
                 android:layout_width="match_parent"
-                android:visibility="gone"
-                android:textColor="@color/white"
-                android:id="@+id/profile_phone_textview"
-                android:layout_height="wrap_content" />
-            <EditText
-                android:layout_width="match_parent"
-                android:id="@+id/profile_number"
-                android:layout_height="wrap_content"
-            />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:weightSum="2"
-        android:padding="@dimen/dimen_10dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:textSize="@dimen/size_20dp"
-            android:paddingLeft="@dimen/dimen_10dp"
-            android:text="Email"
-            android:textColor="@color/white"
-            android:layout_height="wrap_content" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="match_parent"
-                android:visibility="gone"
-                android:textColor="@color/white"
+                android:visibility="visible"
+                android:textColor="@color/black"
+                android:gravity="center"
                 android:textSize="@dimen/size_20dp"
+                android:background="@drawable/corner_radius"
+                android:padding="@dimen/dimen_10dp"
                 android:id="@+id/profile_email_textview"
                 android:layout_height="wrap_content" />
-            <EditText
-                android:layout_width="match_parent"
-                android:id="@+id/profile_email"
-                android:layout_height="wrap_content"
-                />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

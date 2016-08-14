@@ -2,6 +2,7 @@ package com.vizy.newsapp.realread.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -43,7 +46,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 
 
-public class SignIn extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
+public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
 
     Button signIn, noAccount;
     EditText mobileNo, password;
@@ -52,10 +55,11 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
     private static final int RC_SIGN_IN = 9001;
     String TAG = "MainActivity-Google+SignIn";
     GoogleSignInAccount acct;
-    LoginButton loginButton;
+    //LoginButton loginButton;
     CallbackManager callbackManager;
-    Button numberConfirmation;
+    RelativeLayout numberConfirmation, googleSignin;
     public static int APP_REQUEST_CODE = 99;
+    TextView signinText2, signinText, fbText, googleText, mobilenoText;
 
     @Override
     protected void onStart() {
@@ -103,7 +107,27 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_sign_in_2);
+
+        Typeface roboto = Typeface.createFromAsset(getAssets(), "fonts/Raleway-ExtraLight.ttf");
+        signinText2=(TextView)findViewById(R.id.signin_text2);
+        signinText=(TextView)findViewById(R.id.signin_text);
+        googleText=(TextView)findViewById(R.id.google_text);
+        fbText=(TextView)findViewById(R.id.fb_text);
+        mobilenoText=(TextView)findViewById(R.id.mobile_no_text);
+        signinText2.setTypeface(roboto);
+        signinText.setTypeface(roboto);
+        fbText.setTypeface(roboto);
+        googleText.setTypeface(roboto);
+        mobilenoText.setTypeface(roboto);
+
+        googleSignin= (RelativeLayout) findViewById(R.id.google_signin);
+        googleSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signIn();
+            }
+        });
 
         final UserSession session = new UserSession(getApplicationContext());
 
@@ -128,13 +152,13 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, gso).build();
 
-        SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
+        /*SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
-        signInButton.setScopes(gso.getScopeArray());
+        signInButton.setScopes(gso.getScopeArray());*/
 
 
 
-        numberConfirmation= (Button) findViewById(R.id.number_confirmation);
+        numberConfirmation= (RelativeLayout) findViewById(R.id.number_confirmation);
         AccountKit.initialize(getApplicationContext());
         FacebookSdk.sdkInitialize(getApplicationContext());
         numberConfirmation.setOnClickListener(new View.OnClickListener() {
@@ -145,9 +169,9 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
         });
 
         callbackManager = CallbackManager.Factory.create();
-        loginButton = (LoginButton) findViewById(R.id.fb_login);
+        /*loginButton = (LoginButton) findViewById(R.id.fb_login);
         loginButton.setReadPermissions(Arrays.asList(
-                "public_profile", "email"));
+                "public_profile", "email"));*/
         // If using in a fragment
         //  loginButton.setActivi(this);
         // Other app specific specialization
@@ -159,7 +183,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
             //Handle new or logged out user
         }
         // Callback registration
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+        /*loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 // App code
@@ -200,7 +224,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
             public void onError(FacebookException exception) {
                 // App code
             }
-        });
+        });*/
 
     }
 
@@ -232,7 +256,6 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
                     toastMessage = String.format(
                             "Success:%s...",
                             loginResult.getAuthorizationCode().substring(0,10));
-
                 }
                 UserSession session = new UserSession(getApplicationContext());
 
@@ -282,15 +305,15 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
     }
 
 
-    @Override
-    public void onClick(View view) {
+    //@Override
+    /*public void onClick(View view) {
 
         switch (view.getId()) {
-            case R.id.sign_in_button:
+            case R.id.google_signin:
                 signIn();
                 break;
         }
-    }
+    }*/
 
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
@@ -307,5 +330,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener, G
                 AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
                 configurationBuilder.build());
         startActivityForResult(intent, APP_REQUEST_CODE);
+        UserSession session = new UserSession(SignIn.this);
+        session.numberLoginSession();
     }
 }

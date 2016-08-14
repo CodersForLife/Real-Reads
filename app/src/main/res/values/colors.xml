@@ -6,6 +6,8 @@
     <color name="share_background">#FF4081</color>
     <color name="black">#000000</color>
     <color name="textColor">#888888</color>
+    <color name="background_color">#111116</color>
+    <color name="primary_text_color">#dab34a</color>
     <color name="white">#ffffff</color>
 
 </resources>

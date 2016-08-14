@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="SignIn"
+            android:text="Sign In"
             android:textColor="@color/white"
             android:textSize="30sp" />
 
@@ -32,7 +32,8 @@
             android:gravity="center"
             android:text="Rediscover Your Habit of\nReading News"
             android:textColor="@color/white"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:typeface="sans" />
 
     </LinearLayout>
 
@@ -43,23 +44,29 @@
         android:orientation="vertical"
         android:weightSum="4">
 
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/layout_shape">
+
             <com.google.android.gms.common.SignInButton
                 android:id="@+id/sign_in_button"
                 android:layout_width="300dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center_horizontal"
-                style="@style/FacebookLoginButton"
                 android:padding="5dp" />
+        </FrameLayout>
 
-            <com.facebook.login.widget.LoginButton
-                android:id="@+id/fb_login"
-                android:layout_width="280dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:layout_marginTop="@dimen/size_20dp"
-                style="@style/FacebookLoginButton"/>
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/fb_login"
+            style="@style/FacebookLoginButton"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/size_20dp"
+            android:paddingBottom="12dp"
+            android:paddingTop="12dp" />
 
         <TextView
             android:id="@+id/no_account"
@@ -72,7 +79,6 @@
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/number_confirmation"
             android:layout_width="300dp"
             android:layout_height="45dp"
             android:layout_gravity="center"

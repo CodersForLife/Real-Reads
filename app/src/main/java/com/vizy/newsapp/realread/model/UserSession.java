@@ -59,6 +59,11 @@ public class UserSession {
         editor.commit();
     }
 
+    public void numberLoginSession(){
+        editor.putBoolean(IS_LOGIN, true);
+        editor.commit();
+    }
+
 
     /*public void checkLogin(){
         if(!this.isLoggedIn()){

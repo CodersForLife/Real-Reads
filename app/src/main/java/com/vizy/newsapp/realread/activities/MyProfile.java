@@ -24,13 +24,13 @@ public class MyProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_profile);
 
-        profileName=(EditText) findViewById(R.id.profile_name);
-        profileEmail=(EditText) findViewById(R.id.profile_email);
-        profilePhone=(EditText) findViewById(R.id.profile_number);
+        //profileName=(EditText) findViewById(R.id.profile_name);
+        //profileEmail=(EditText) findViewById(R.id.profile_email);
+        //profilePhone=(EditText) findViewById(R.id.profile_number);
 
         profileEmailTextview=(TextView)findViewById(R.id.profile_email_textview);
         profileNameTextview=(TextView)findViewById(R.id.profile_name_textview);
-        profileNumberTextview=(TextView)findViewById(R.id.profile_phone_textview);
+        //profileNumberTextview=(TextView)findViewById(R.id.profile_phone_textview);
 
         profilePic=(ImageView) findViewById(R.id.profile_pic);
 
@@ -46,12 +46,12 @@ public class MyProfile extends AppCompatActivity {
         if(name.length()>0)
         {
             profileNameTextview.setVisibility(View.VISIBLE);
-            profileName.setVisibility(View.GONE);
+            //profileName.setVisibility(View.GONE);
             profileNameTextview.setText(name);
         }
         if(email.length()>0){
             profileEmailTextview.setVisibility(View.VISIBLE);
-            profileEmail.setVisibility(View.GONE);
+            //profileEmail.setVisibility(View.GONE);
             profileEmailTextview.setText(email);
         }
 
