@@ -8,17 +8,24 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.ProgressBar;
 
 import com.squareup.okhttp.Callback;
@@ -55,13 +62,40 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private Context context;
     private Handler handler;
     private Cursor c;
+    private Toolbar toolbar;
+    private DrawerLayout homeDrawerLayout;
+    private NavigationView homeNavigationView;
+    private View homeNavigationHeaderView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       // getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         setContentView(R.layout.activity_main);
-
+//        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.argb(128, 0, 0, 0)));
         context = getApplicationContext();
+        homeNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        homeNavigationHeaderView = homeNavigationView.getHeaderView(0);
+        homeDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+      //  toolbar.setTitle("Realreads");
+
+        ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(this, homeDrawerLayout, toolbar, R.string.openDrawer, R.string.closeDrawer){
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+        };
+        homeDrawerLayout.setDrawerListener(actionBarDrawerToggle);
+        //calling sync state is necessary or else your hamburger icon wont show up
+        actionBarDrawerToggle.syncState();
 
         progressBar = (ProgressBar) findViewById(R.id.progress_bar);
         newsList = new ArrayList<Article>();
