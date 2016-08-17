@@ -55,7 +55,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     private static final int RC_SIGN_IN = 9001;
     String TAG = "MainActivity-Google+SignIn";
     GoogleSignInAccount acct;
-    //LoginButton loginButton;
+    LoginButton loginButton;
     CallbackManager callbackManager;
     RelativeLayout numberConfirmation, googleSignin;
     public static int APP_REQUEST_CODE = 99;
