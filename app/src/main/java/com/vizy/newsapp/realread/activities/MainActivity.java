@@ -8,8 +8,6 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,7 +23,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.ProgressBar;
 
 import com.squareup.okhttp.Callback;
