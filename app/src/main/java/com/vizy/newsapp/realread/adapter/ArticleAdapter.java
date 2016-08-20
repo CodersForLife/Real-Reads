@@ -62,7 +62,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         {
             holder.bookmarkButton.setBackgroundResource(R.drawable.ic_bookmark_unselected_24dp);
         }
-
+        cursor.close();
         Picasso.with(context).load(article.getUrlToImage()).into(holder.newsImage, new Callback() {
             @Override
             public void onSuccess() {
@@ -136,6 +136,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                     context.getContentResolver().update(QuoteProvider.Quotes.CONTENT_URI, contentValues,
                             DatabseColumns.TITLE + " = ?", new String[]{article.getTitle()});
                 }
+                cursor2.close();
             }
         });
 

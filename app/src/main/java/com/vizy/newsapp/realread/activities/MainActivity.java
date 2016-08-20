@@ -23,6 +23,8 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.squareup.okhttp.Callback;
@@ -46,7 +48,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>,View.OnClickListener {
 
     private final String TAG = MainActivity.this.getClass().getSimpleName();
     private String json = "";
@@ -63,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private DrawerLayout homeDrawerLayout;
     private NavigationView homeNavigationView;
     private View homeNavigationHeaderView;
+    private ImageView userImage;
+    private LinearLayout logout,myProfile,favouriteLayout,rateUs,aboutUs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,11 +82,22 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
       //  toolbar.setTitle("Realreads");
+        userImage=(ImageView)homeNavigationHeaderView.findViewById(R.id.user_image);
+        logout=(LinearLayout)homeNavigationHeaderView.findViewById(R.id.logout);
+        myProfile=(LinearLayout)homeNavigationHeaderView.findViewById(R.id.my_profile);
+        favouriteLayout=(LinearLayout)homeNavigationHeaderView.findViewById(R.id.favourite_layout);
+        rateUs=(LinearLayout)homeNavigationHeaderView.findViewById(R.id.rate_us);
+        aboutUs=(LinearLayout)homeNavigationHeaderView.findViewById(R.id.about_us);
 
         ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(this, homeDrawerLayout, toolbar, R.string.openDrawer, R.string.closeDrawer){
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
+                logout.setOnClickListener(MainActivity.this);
+                myProfile.setOnClickListener(MainActivity.this);
+                favouriteLayout.setOnClickListener(MainActivity.this);
+                rateUs.setOnClickListener(MainActivity.this);
+                aboutUs.setOnClickListener(MainActivity.this);
             }
 
             @Override
@@ -200,16 +215,24 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-
-            case R.id.favourites:
-                Intent j = new Intent(MainActivity.this, Favourites.class);
-                startActivity(j);
-                return true;
-            case R.id.about_us:
-                Intent i = new Intent(context, About_Us.class);
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    @Override
+    public void onClick(View view) {
+        switch (view.getId())
+        {
+            case R.id.my_profile:
+                Intent i=new Intent(MainActivity.this,MyProfile.class);
                 startActivity(i);
-                return true;
-            case R.id.feedback:
+                break;
+            case R.id.favourite_layout:
+                Intent j=new Intent(MainActivity.this,Favourites.class);
+                startActivity(j);
+                break;
+
+            case R.id.rate_us:
                 Uri uri = Uri.parse("market://details?id=" + context.getPackageName());
                 Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
                 goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
@@ -221,17 +244,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                     startActivity(new Intent(Intent.ACTION_VIEW,
                             Uri.parse("http://play.google.com/store/apps/details?id=" + context.getPackageName())));
                 }
-                return true;
-            case R.id.profile:
-                Intent intent = new Intent(context, MyProfile.class);
-                startActivity(intent);
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
+                break;
+            case R.id.about_us:
+                Intent k = new Intent(context, About_Us.class);
+                startActivity(k);
+                break;
         }
     }
-
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         progressBar.setVisibility(View.INVISIBLE);
@@ -263,4 +282,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
     }
+
+
 }

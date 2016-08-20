@@ -24,13 +24,14 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:layout_weight="1"
-        android:weightSum="3"
+        android:weightSum="4"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_weight="1"
+            android:id="@+id/my_profile"
             android:layout_marginTop="10dp"
             android:layout_height="match_parent">
             <ImageView
@@ -55,7 +56,7 @@
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_weight="1"
-            android:id="@+id/add_new_event"
+            android:id="@+id/favourite_layout"
             android:layout_marginTop="10dp"
             android:layout_height="match_parent">
             <ImageView
@@ -78,7 +79,7 @@
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_weight="1"
-            android:id="@+id/add_new_profile"
+            android:id="@+id/about_us"
             android:layout_marginTop="10dp"
             android:layout_height="match_parent">
             <ImageView
@@ -91,7 +92,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:textColor="@color/white"
-                android:text="Settings"
+                android:text="About Us"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="15dp"
                 android:fontFamily="sans-serif-medium"
@@ -100,8 +101,35 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"/>
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:id="@+id/rate_us"
+            android:layout_marginTop="10dp"
+            android:layout_height="match_parent">
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_settings"
+                android:tint="@android:color/darker_gray"
+                android:layout_height="30dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:text="Rate Us"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="15dp"
+                android:fontFamily="sans-serif-medium"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+
 </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"/>
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"

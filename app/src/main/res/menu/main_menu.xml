@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/favourites"
-        android:title="Favourites"/>
-    <item android:title="About Us"
-        android:id="@+id/about_us"></item>
-    <item
-        android:id="@+id/feedback"
-        android:title="Feedback"></item>
-    <item
-        android:id="@+id/profile"
-        android:title="My Profile"></item>
 
 </menu>
