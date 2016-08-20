@@ -10,7 +10,6 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +50,19 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         final Article article = articleList.get(position);
         holder.title.setText(article.getTitle());
         holder.description.setText(article.getDescription());
+
+        Cursor cursor=context.getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI, new String[]{DatabseColumns.BOOKMARK}, DatabseColumns.TITLE
+                + " = ?", new String[]{article.getTitle()}, null);
+        cursor.moveToFirst();
+        if(cursor.getString(cursor.getColumnIndex("newsBookmark")).equalsIgnoreCase("1"))
+        {
+            holder.bookmarkButton.setBackgroundResource(R.drawable.ic_bookmark_selected_24dp);
+        }
+        else
+        {
+            holder.bookmarkButton.setBackgroundResource(R.drawable.ic_bookmark_unselected_24dp);
+        }
+
         Picasso.with(context).load(article.getUrlToImage()).into(holder.newsImage, new Callback() {
             @Override
             public void onSuccess() {
@@ -100,21 +112,24 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
             }
         });
 
-
         holder.bookmarkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (holder.bookmarkButton.isChecked()) {
-
-                    holder.bookmarkButton.setBackgroundResource(R.drawable.ic_bookmark_selected_24dp);
+                Cursor cursor2=context.getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI, new String[]{DatabseColumns.BOOKMARK}, DatabseColumns.TITLE
+                        + " = ?", new String[]{article.getTitle()}, null);
+                cursor2.moveToFirst();
+                if(cursor2.getString(cursor2.getColumnIndex("newsBookmark")).equalsIgnoreCase("1"))
+                {
+                    holder.bookmarkButton.setBackgroundResource(R.drawable.ic_bookmark_unselected_24dp);
                     ContentValues contentValues = new ContentValues();
-                    contentValues.put("newsBookmark", "1");
+                    contentValues.put("newsBookmark", "0");
 
                     context.getContentResolver().update(QuoteProvider.Quotes.CONTENT_URI, contentValues,
                             DatabseColumns.TITLE + " = ?", new String[]{article.getTitle()});
-
-                } else {
-                    holder.bookmarkButton.setBackgroundResource(R.drawable.ic_bookmark_unselected_24dp);
+                }
+                else if (cursor2.getString(cursor2.getColumnIndex("newsBookmark")).equalsIgnoreCase("0"))
+                {
+                    holder.bookmarkButton.setBackgroundResource(R.drawable.ic_bookmark_selected_24dp);
                     ContentValues contentValues = new ContentValues();
                     contentValues.put("newsBookmark", "1");
 

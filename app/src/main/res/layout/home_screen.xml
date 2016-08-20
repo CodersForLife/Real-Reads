@@ -106,7 +106,7 @@
         android:layout_width="30dp"
         android:layout_height="36dp"
         android:layout_margin="6dp"
-        android:background="@drawable/toggle_button_state"
+        android:background="@drawable/ic_bookmark_unselected_24dp"
         android:checked="false"
         app:layout_anchor="@id/viewA"
         app:layout_anchorGravity="bottom|right|end" />

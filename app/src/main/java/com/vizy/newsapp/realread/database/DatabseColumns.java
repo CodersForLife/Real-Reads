@@ -2,6 +2,7 @@ package com.vizy.newsapp.realread.database;
 
 import net.simonvt.schematic.annotation.AutoIncrement;
 import net.simonvt.schematic.annotation.DataType;
+import net.simonvt.schematic.annotation.DefaultValue;
 import net.simonvt.schematic.annotation.NotNull;
 import net.simonvt.schematic.annotation.PrimaryKey;
 
@@ -19,6 +20,6 @@ public class DatabseColumns {
     @DataType(DataType.Type.TEXT) @NotNull
     public static final String URL = "newsImageUrl";
 
-    @DataType(DataType.Type.TEXT)
+    @DataType(DataType.Type.TEXT) @DefaultValue("0")
     public static final String BOOKMARK="newsBookmark";
 }

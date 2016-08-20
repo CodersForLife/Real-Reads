@@ -13,6 +13,24 @@
             android:id="@+id/favourite_news_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_centerInParent="true"
+            android:layout_above="@+id/favourite_progress_bar"
+            android:id="@+id/no_bookmark"
+            android:visibility="invisible"
+            android:src="@drawable/ic_no_favourite_black_24dp"
+            android:layout_height="100dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/no_bookmark_msg"
+            android:layout_below="@+id/no_bookmark"
+            android:gravity="center"
+            android:visibility="invisible"
+            android:layout_margin="@dimen/size_20dp"
+            android:text="You don't have any bookmarks"
+            android:textSize="@dimen/size_20dp"/>
 
         <ProgressBar
             android:layout_width="wrap_content"
