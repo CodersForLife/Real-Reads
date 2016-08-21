@@ -28,17 +28,15 @@
                 android:id="@+id/viewB"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#f1f1f1"
                 android:layout_weight="0.6"
+                android:background="#ffffff"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/news_heading"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:gravity="center_horizontal"
-                    android:padding="5dp"
+                    android:padding="@dimen/dimen_10dp"
                     android:textColor="@color/black"
                     android:textSize="15dp"
                     android:textStyle="bold" />
@@ -47,8 +45,10 @@
                     android:id="@+id/news_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:padding="5dp" />
+                    android:textSize="13dp"
+                    android:paddingTop="0dp"
+                    android:paddingLeft="@dimen/dimen_10dp"
+                    android:paddingRight="@dimen/dimen_10dp" />
 
             </LinearLayout>
 
@@ -64,6 +64,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:padding="10dp"
+                android:textSize="13dp"
                 android:text="Powered by Viz.Y" />
 
             <LinearLayout
@@ -74,7 +75,7 @@
             <Button
                 android:id="@+id/share_news"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="30dp"
                 android:layout_gravity="right|center"
                 android:layout_margin="10dp"
                 android:layout_weight="1"
