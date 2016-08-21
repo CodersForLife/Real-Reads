@@ -27,6 +27,8 @@ public class UserSession {
 
     public static final String KEY_PASSWORD = "password";
 
+    public static final String GOOGLE_ID = "googleId";
+
     public static final String KEY_ID = "id";
 
     public UserSession(Context context){
@@ -43,10 +45,11 @@ public class UserSession {
         editor.commit();
     }
 
-    public void googleLoginSession(String name, String email){
+    public void googleLoginSession(String name, String email,String googleId){
         editor.putBoolean(IS_LOGIN, true);
         editor.putString(KEY_NAME, name);
         editor.putString(KEY_EMAIL, email);
+        editor.putString(GOOGLE_ID,googleId);
         editor.commit();
     }
 

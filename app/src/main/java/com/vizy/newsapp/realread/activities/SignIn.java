@@ -280,10 +280,11 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
 
             String nam = acct.getDisplayName();
             String em = acct.getEmail();
+            String google_id=acct.getPhotoUrl().getAuthority().toString();
 //            String userUrl=acct.getPhotoUrl().toString();
 
             UserSession session = new UserSession(this);
-            session.googleLoginSession(nam, em);
+            session.googleLoginSession(nam, em,google_id);
 
             startActivity(new Intent(this, MainActivity.class));
             finish();

@@ -2,6 +2,7 @@ package com.vizy.newsapp.realread.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,7 +19,7 @@ public class MyProfile extends AppCompatActivity {
     private EditText profileName,profileEmail,profilePhone;
     private TextView profileNameTextview,profileEmailTextview,profileNumberTextview;
     private ImageView profilePic;
-    private String picUrl;
+    private String picUrl,id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +38,26 @@ public class MyProfile extends AppCompatActivity {
         UserSession session = new UserSession(getApplicationContext());
 
         HashMap<String, String> user = session.getUserDetails();
+
+        if(user.get(UserSession.GOOGLE_ID)==null)
+        {
+            id=user.get(UserSession.KEY_ID);
+            picUrl="https://graph.facebook.com/" + id + "/picture?type=large";
+        }
+        else
+        {
+           // id=user.get(UserSession.GOOGLE_ID);
+           // picUrl="https://plus.google.com/s2/photos/profile/"+id+"?sz=100";
+            picUrl=user.get(UserSession.GOOGLE_ID);
+
+        }
+
+        Log.e("url",picUrl);
         String name = user.get(UserSession.KEY_NAME);
         String email = user.get(UserSession.KEY_EMAIL);
-        String id=user.get(UserSession.KEY_ID);
 
-        picUrl="https://graph.facebook.com/" + id + "/picture?type=large";
+
+
 
         if(name.length()>0)
         {
