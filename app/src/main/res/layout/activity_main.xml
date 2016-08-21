@@ -26,16 +26,6 @@
         android:layout_width="260dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:fitsSystemWindows="true"
+        android:background="@color/color"
         app:headerLayout="@layout/navigation_view_header" />
-</android.support.v4.widget.DrawerLayout><!-- <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-           xmlns:app="http://schemas.android.com/apk/res-auto"
-           android:id="@+id/toolbar"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:alpha="0.8"
-           android:background="@color/colorPrimary"
-           android:minHeight="?attr/actionBarSize"
-           app:contentInsetLeft="0dp"
-           app:contentInsetStart="0dp"
-           app:theme="@style/MyToolbar"></android.support.v7.widget.Toolbar>-->
+</android.support.v4.widget.DrawerLayout>
