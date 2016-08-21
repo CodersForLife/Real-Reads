@@ -3,8 +3,10 @@ package com.vizy.newsapp.realread.adapter;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -33,6 +35,8 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
 
     private List<Article> articleList = new ArrayList<>();
     public Context context;
+    Typeface roboto;
+    private AssetManager assets;
 
     public ArticleAdapter(List<Article> articleList, Context context) {
         this.articleList = articleList;
@@ -42,6 +46,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
     @Override
     public ArticleViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View item = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_screen, parent, false);
+        roboto = Typeface.createFromAsset(context.getAssets(), "fonts/Roboto-Regular.ttf");
         ArticleViewHolder articleViewHolder = new ArticleViewHolder(item);
         return articleViewHolder;
     }
@@ -51,6 +56,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
         final Article article = articleList.get(position);
         holder.title.setText(article.getTitle());
         holder.description.setText(article.getDescription());
+        holder.title.setTypeface(roboto);
+        holder.description.setTypeface(roboto);
+
 
         Cursor cursor=context.getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI, new String[]{DatabseColumns.BOOKMARK}, DatabseColumns.TITLE
                 + " = ?", new String[]{article.getTitle()}, null);
@@ -170,7 +178,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
             bookmarkButton.setText(null);
             bookmarkButton.setTextOn(null);
             bookmarkButton.setTextOff(null);
-
 
         }
     }

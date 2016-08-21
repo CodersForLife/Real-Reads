@@ -1,7 +1,9 @@
 package com.vizy.newsapp.realread.activities;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,13 +16,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.Profile;
 import com.facebook.accountkit.AccessToken;
 import com.facebook.accountkit.AccountKit;
 import com.facebook.accountkit.AccountKitLoginResult;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -32,6 +39,9 @@ import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.vizy.newsapp.realread.R;
 import com.vizy.newsapp.realread.model.UserSession;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener {
@@ -45,7 +55,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     GoogleSignInAccount acct;
     LoginButton loginButton;
     CallbackManager callbackManager;
-    RelativeLayout numberConfirmation, googleSignin;
+    RelativeLayout numberConfirmation, googleSignin, fbSignin;
     public static int APP_REQUEST_CODE = 99;
     TextView signinText2, signinText, fbText, googleText, mobilenoText;
 
@@ -108,7 +118,6 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         fbText.setTypeface(roboto);
         googleText.setTypeface(roboto);
         mobilenoText.setTypeface(roboto);
-
         googleSignin= (RelativeLayout) findViewById(R.id.google_signin);
         googleSignin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,20 +165,55 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
             }
         });
 
-        callbackManager = CallbackManager.Factory.create();
+        final List<String> permissionNeeds = Arrays.asList("user_friends","user_photos","email");
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        callbackManager= CallbackManager.Factory.create();
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                //AccessToken accessToken = loginResult.getAccessToken();
+                AccessToken accessToken = AccountKit.getCurrentAccessToken();
+                Profile profile = Profile.getCurrentProfile();
+                if(profile!=null){
+                    //support local session in app when login through FB
+                    UserSession session = new UserSession(SignIn.this);
+                    session.numberLoginSession();
+                    Intent i =new Intent(SignIn.this,MainActivity.class);
+                    startActivity(i);
+                    finish();
+                }
+            }
+            @Override
+            public void onCancel() {
+            }
+            @Override
+            public void onError(FacebookException error) {
+            }
+        });
+
+        fbSignin =(RelativeLayout) findViewById(R.id.facebookSignInBtn);
+        fbSignin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginManager.getInstance().logInWithReadPermissions(SignIn.this,permissionNeeds);
+            }
+        });
+
+
+        //callbackManager = CallbackManager.Factory.create();
         /*loginButton = (LoginButton) findViewById(R.id.fb_login);
         loginButton.setReadPermissions(Arrays.asList(
                 "public_profile", "email"));*/
         // If using in a fragment
         //  loginButton.setActivi(this);
         // Other app specific specialization
-        AccessToken accessToken = AccountKit.getCurrentAccessToken();
+        //AccessToken accessToken = AccountKit.getCurrentAccessToken();
 
-        if (accessToken != null) {
+        //if (accessToken != null) {
             //Handle Returning User
-        } else {
+        //} else {
             //Handle new or logged out user
-        }
+        //}
         // Callback registration
         /*loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
