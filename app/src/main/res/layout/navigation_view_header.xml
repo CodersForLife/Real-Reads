@@ -1,7 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_color"
+    android:background="@color/color"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -139,7 +139,7 @@
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:weightSum="2"
+        android:weightSum="1"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -160,29 +160,6 @@
                 android:textColor="@color/white"
                 android:text="Logout"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="15dp"
-                android:fontFamily="sans-serif-medium"
-                android:layout_height="match_parent" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:layout_marginTop="10dp"
-            android:layout_height="match_parent">
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/madeinindia"
-                android:layout_height="30dp"  />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:textColor="@color/white"
-                android:text="Made In India"
-                android:gravity="center_vertical"
-                android:tint="@android:color/darker_gray"
                 android:layout_marginLeft="15dp"
                 android:fontFamily="sans-serif-medium"
                 android:layout_height="match_parent" />

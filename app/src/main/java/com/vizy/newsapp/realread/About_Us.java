@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -12,7 +13,8 @@ import com.squareup.picasso.Picasso;
 
 public class About_Us extends AppCompatActivity implements View.OnClickListener {
 
-    String url_to_be_opened="";
+    private String url_to_be_opened="";
+    private Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +22,10 @@ public class About_Us extends AppCompatActivity implements View.OnClickListener 
 
         ImageButton aditya,tanveer,archit,nimit,piyush,saad,kaabir,tanveer_mobile;
         ImageView adi,tanv,arc,nimmo,piy,saa,kaabu;
+
+        toolbar=(Toolbar)findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("About Us");
 
         adi=(ImageView)findViewById(R.id.aditya_image);
         tanv=(ImageView)findViewById(R.id.tanveer_image);
@@ -30,7 +36,7 @@ public class About_Us extends AppCompatActivity implements View.OnClickListener 
         kaabu=(ImageView)findViewById(R.id.kabir_image);
 
 
-        Picasso.with(this).load(Constants.aditya_image_url).into(adi);
+        Picasso.with(this).load(Constants.aditya_image_url).centerCrop().fit().into(adi);
         Picasso.with(this).load(Constants.piyush_image_url).into(piy);
         Picasso.with(this).load(Constants.archit_image_url).into(arc);
         Picasso.with(this).load(Constants.tanveer_image_url).into(tanv);

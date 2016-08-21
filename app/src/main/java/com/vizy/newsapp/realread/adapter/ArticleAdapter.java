@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,23 +72,27 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                     @Override
                     public void onClick(View view) {
 
-                        Drawable drawable = holder.newsImage.getDrawable();
-                        Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-                        String path = MediaStore.Images.Media.insertImage(context.getContentResolver(),
-                                bitmap, "Image Description", null);
+                        try {
+                            Drawable drawable = holder.newsImage.getDrawable();
+                            Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+                            String path = MediaStore.Images.Media.insertImage(context.getContentResolver(),
+                                    bitmap, "Image Description", null);
 
-                        Uri uri = Uri.parse(path);
+                            Uri uri = Uri.parse(path);
 
 
-                        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                        sharingIntent.setType("image/*");
-                        String shareBody = "Here is the share content body";
-                        sharingIntent.putExtra(android.content.Intent.EXTRA_STREAM, uri);
-                        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, article.getTitle() + "\n\n");
-                        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, article.getDescription());
+                            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+                            sharingIntent.setType("image/*");
+                            String shareBody = "Here is the share content body";
+                            sharingIntent.putExtra(android.content.Intent.EXTRA_STREAM, uri);
+                            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, article.getTitle() + "\n\n");
+                            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, article.getDescription());
 
-                        context.startActivity(Intent.createChooser(sharingIntent, "Share via").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                            context.startActivity(Intent.createChooser(sharingIntent, "Share via").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
+                        }catch (Exception e){
+                            Log.e("Error in sharing image",e.getMessage().toString()+" ");
+                        }
                     }
                 });
 
