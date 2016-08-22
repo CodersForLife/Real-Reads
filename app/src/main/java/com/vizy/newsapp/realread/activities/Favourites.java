@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -34,6 +35,7 @@ public class Favourites extends AppCompatActivity implements LoaderManager.Loade
     private ProgressBar progressBar;
     private ImageView noBookmark;
     private TextView noBookmarkMsg;
+    private Toolbar favouriteToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,8 @@ public class Favourites extends AppCompatActivity implements LoaderManager.Loade
 
         noBookmark=(ImageView)findViewById(R.id.no_bookmark);
         noBookmarkMsg=(TextView)findViewById(R.id.no_bookmark_msg);
+        favouriteToolbar=(Toolbar)findViewById(R.id.favourite_toolbar);
+        setSupportActionBar(favouriteToolbar);
 
         progressBar = (ProgressBar) findViewById(R.id.favourite_progress_bar);
         newsList = new ArrayList<Article>();
