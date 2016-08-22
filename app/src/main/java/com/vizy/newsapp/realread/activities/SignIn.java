@@ -145,9 +145,15 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
 //        findViewById(R.id.sign_in_button).setOnClickListener(this);
 
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestProfile().build();
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, gso).build();
+       /* mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(Plus.API)
+                .addScope(Plus.SCOPE_PLUS_LOGIN)
+                .addScope(Plus.SCOPE_PLUS_PROFILE)
+                .build();*/
 
         /*SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
@@ -289,8 +295,9 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                             "Success:%s...",
                             loginResult.getAuthorizationCode().substring(0,10));
                 }
+                Log.e(TAG,loginResult.getAuthorizationCode().substring(0,10));
                 UserSession session = new UserSession(getApplicationContext());
-
+                session.numberLoginSession();
 
                 startActivity(new Intent(SignIn.this,MainActivity.class));
                 finish();
@@ -309,6 +316,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         Log.d(TAG, "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
+            Log.i("signin result Google",result.toString());
             acct = result.getSignInAccount();
             // mStatusTextView.setText(getString(R.string.signed_in_fmt, acct.getDisplayName()));
             updateUI(true);
@@ -321,11 +329,13 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
     private void updateUI(boolean b) {
         if (b) {
             Log.e("Sucessfull", "Login");
-
+            Log.i("google login result",acct.toString());
             String nam = acct.getDisplayName();
             String em = acct.getEmail();
-            String google_id=acct.getPhotoUrl().getAuthority().toString();
+//            String google_id=acct.getPhotoUrl().toString();
 //            String userUrl=acct.getPhotoUrl().toString();
+            String google_id=acct.getFamilyName();
+            Log.e("googleId",google_id);
 
             UserSession session = new UserSession(this);
             session.googleLoginSession(nam, em,google_id);
@@ -363,7 +373,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                 AccountKitActivity.ACCOUNT_KIT_ACTIVITY_CONFIGURATION,
                 configurationBuilder.build());
         startActivityForResult(intent, APP_REQUEST_CODE);
-        UserSession session = new UserSession(SignIn.this);
-        session.numberLoginSession();
+       /* UserSession session = new UserSession(SignIn.this);
+        session.numberLoginSession();*/
     }
 }

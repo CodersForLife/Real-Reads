@@ -18,7 +18,22 @@
             android:background="@drawable/circle2"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher" />
+        <TextView
+            android:layout_width="match_parent"
+            android:textSize="@dimen/dimen_15sp"
+            android:layout_below="@+id/user_image"
+            android:gravity="center"
+            android:text="Hi Piyush"
+            android:textColor="@color/on_released_text_color_navigation_drawer"
+            android:id="@+id/user_name"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,7 +63,8 @@
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_vertical"
                 android:text="My Profile"
-                android:textColor="@color/white"
+                android:textColor="@color/on_released_text_color_navigation_drawer"
+                android:id="@+id/my_profile_navigation_drawer"
                 android:textSize="14sp" />
         </LinearLayout>
 
@@ -72,8 +88,9 @@
                 android:layout_marginLeft="15dp"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_vertical"
+                android:id="@+id/favourites_navigation_drawer"
                 android:text="Favourites"
-                android:textColor="@color/white" />
+                android:textColor="@color/on_released_text_color_navigation_drawer" />
         </LinearLayout>
 
         <LinearLayout
@@ -96,8 +113,9 @@
                 android:layout_marginLeft="15dp"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_vertical"
+                android:id="@+id/about_us_navigation_drawer"
                 android:text="About Us"
-                android:textColor="@color/white" />
+                android:textColor="@color/on_released_text_color_navigation_drawer" />
         </LinearLayout>
 
         <LinearLayout
@@ -119,9 +137,10 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="15dp"
                 android:fontFamily="sans-serif-medium"
+                android:id="@+id/rate_us_navigation_drawer"
                 android:gravity="center_vertical"
                 android:text="Rate Us"
-                android:textColor="@color/white" />
+                android:textColor="@color/on_released_text_color_navigation_drawer" />
         </LinearLayout>
 
 
@@ -130,7 +149,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="100dp" />
 
     <View
         android:layout_width="fill_parent"
@@ -166,7 +185,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center_vertical"
                 android:text="Logout"
-                android:textColor="@color/white" />
+                android:textColor="@color/on_released_text_color_navigation_drawer" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

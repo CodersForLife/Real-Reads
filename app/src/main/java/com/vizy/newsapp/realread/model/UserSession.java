@@ -88,6 +88,7 @@ public class UserSession {
         user.put(KEY_NAME, pref.getString(KEY_NAME, null));
         user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));
         user.put(KEY_ID, pref.getString(KEY_ID,null));
+        user.put(GOOGLE_ID,pref.getString(GOOGLE_ID,null));
         return user;
     }
 

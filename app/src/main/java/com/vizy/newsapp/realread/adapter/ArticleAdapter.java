@@ -94,7 +94,8 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                             String shareBody = "Here is the share content body";
                             sharingIntent.putExtra(android.content.Intent.EXTRA_STREAM, uri);
                             sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, article.getTitle() + "\n\n");
-                            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, article.getDescription());
+                            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, article.getDescription()
+                                    +"\n\t Read more in our app \n https://play.google.com/store/apps/details?id=com.vizy.newsapp.realread");
 
                             context.startActivity(Intent.createChooser(sharingIntent, "Share via").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
 
@@ -115,7 +116,8 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ArticleV
                         sharingIntent.setType("text/plain");
                         String shareBody = "Here is the share content body";
                         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, article.getTitle() + "\n\n");
-                        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, article.getDescription());
+                        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, article.getDescription()
+                                +"\n\t Read more in our app \n https://play.google.com/store/apps/details?id=com.vizy.newsapp.realread");
 
                         context.startActivity(Intent.createChooser(sharingIntent, "Share via"));
                     }

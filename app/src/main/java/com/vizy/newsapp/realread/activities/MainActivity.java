@@ -22,10 +22,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -48,7 +50,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>,View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>,View.OnClickListener,
+View.OnTouchListener{
 
     private final String TAG = MainActivity.this.getClass().getSimpleName();
     private String json = "";
@@ -66,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private NavigationView homeNavigationView;
     private View homeNavigationHeaderView;
     private ImageView userImage;
+    private TextView userName,myProfileNavigationDrawer,favouritesNavigationDrawer,aboutUsNavigationDrawer,rateUsNavigationDrawer;
     private LinearLayout logout,myProfile,favouriteLayout,rateUs,aboutUs;
 
     @Override
@@ -88,6 +92,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         favouriteLayout=(LinearLayout)homeNavigationHeaderView.findViewById(R.id.favourite_layout);
         rateUs=(LinearLayout)homeNavigationHeaderView.findViewById(R.id.rate_us);
         aboutUs=(LinearLayout)homeNavigationHeaderView.findViewById(R.id.about_us);
+        userName=(TextView)homeNavigationHeaderView.findViewById(R.id.user_name);
+
+        myProfileNavigationDrawer=(TextView)homeNavigationHeaderView.findViewById(R.id.my_profile_navigation_drawer);
+        favouritesNavigationDrawer=(TextView)homeNavigationHeaderView.findViewById(R.id.favourites_navigation_drawer);
+        aboutUsNavigationDrawer=(TextView)homeNavigationHeaderView.findViewById(R.id.about_us_navigation_drawer);
+        rateUsNavigationDrawer=(TextView)homeNavigationHeaderView.findViewById(R.id.rate_us_navigation_drawer);
 
         ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(this, homeDrawerLayout, toolbar, R.string.openDrawer, R.string.closeDrawer){
             @Override
@@ -98,6 +108,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 favouriteLayout.setOnClickListener(MainActivity.this);
                 rateUs.setOnClickListener(MainActivity.this);
                 aboutUs.setOnClickListener(MainActivity.this);
+
+                myProfile.setOnTouchListener(MainActivity.this);
+                favouriteLayout.setOnTouchListener(MainActivity.this);
+                rateUs.setOnTouchListener(MainActivity.this);
+                aboutUs.setOnTouchListener(MainActivity.this);
             }
 
             @Override
@@ -284,4 +299,62 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
 
+    @Override
+    public boolean onTouch(View view, MotionEvent motionEvent) {
+        if(motionEvent.getAction()==MotionEvent.ACTION_DOWN)
+        {
+            switch (view.getId())
+            {
+                case R.id.my_profile:
+                    myProfileNavigationDrawer.setTextColor(getResources().getColor(R.color.text_color_navigation_drawer));
+                   // myProfile.setBackgroundResource(getResources().getColor(R.color.on_pressed_background_color));
+                    myProfile.setBackgroundResource(R.color.on_pressed_background_color);
+                    break;
+
+                case R.id.favourite_layout:
+                    favouritesNavigationDrawer.setTextColor(getResources().getColor(R.color.text_color_navigation_drawer));
+                    favouriteLayout.setBackgroundResource(R.color.on_pressed_background_color);
+                    break;
+
+                case R.id.rate_us:
+                    rateUsNavigationDrawer.setTextColor(getResources().getColor(R.color.text_color_navigation_drawer));
+                    rateUs.setBackgroundResource(R.color.on_pressed_background_color);
+                    break;
+
+                case R.id.about_us:
+                    aboutUsNavigationDrawer.setTextColor(getResources().getColor(R.color.text_color_navigation_drawer));
+                    aboutUs.setBackgroundResource(R.color.on_pressed_background_color);
+                    break;
+
+            }
+        }
+        else if(motionEvent.getAction()==MotionEvent.ACTION_UP)
+        {
+            switch (view.getId())
+            {
+                case R.id.my_profile:
+                    myProfileNavigationDrawer.setTextColor(getResources().getColor(R.color.on_released_text_color_navigation_drawer));
+                    myProfile.setBackgroundResource(R.color.color);
+                    break;
+
+                case R.id.favourite_layout:
+                    favouritesNavigationDrawer.setTextColor(getResources().getColor(R.color.on_released_text_color_navigation_drawer));
+                    favouriteLayout.setBackgroundResource(R.color.color);
+                    break;
+
+                case R.id.rate_us:
+                    rateUsNavigationDrawer.setTextColor(getResources().getColor(R.color.on_released_text_color_navigation_drawer));
+                    rateUs.setBackgroundResource(R.color.color);
+                    break;
+
+                case R.id.about_us:
+                    aboutUsNavigationDrawer.setTextColor(getResources().getColor(R.color.on_released_text_color_navigation_drawer));
+                    aboutUs.setBackgroundResource(R.color.color);
+                    break;
+
+            }
+        }
+
+        return false;
+    }
 }

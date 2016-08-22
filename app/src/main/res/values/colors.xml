@@ -3,12 +3,15 @@
     <color name="colorPrimary">#31373b</color>
     <color name="colorPrimaryDark">#272c2f</color>
     <color name="colorAccent">#888888</color>
-    <color name="color">#c9c3c3</color>
+    <color name="color">#171518</color>
     <color name="share_background">#FF4081</color>
     <color name="black">#000000</color>
     <color name="textColor">#888888</color>
     <color name="background_color">#111116</color>
     <color name="primary_text_color">#dab34a</color>
+    <color name="text_color_navigation_drawer">#FFBD02</color>
+    <color name="on_released_text_color_navigation_drawer">#F6F4F7</color>
+    <color name="on_pressed_background_color">#110F12</color>
     <color name="white">#ffffff</color>
 
 </resources>

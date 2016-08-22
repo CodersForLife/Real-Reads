@@ -46,8 +46,8 @@ public class MyProfile extends AppCompatActivity {
         }
         else
         {
-           // id=user.get(UserSession.GOOGLE_ID);
-           // picUrl="https://plus.google.com/s2/photos/profile/"+id+"?sz=100";
+           //id=user.get(UserSession.GOOGLE_ID);
+            //picUrl="https://www.googleapis.com/plus/v1/people/"+id+"?sz=100";
             picUrl=user.get(UserSession.GOOGLE_ID);
 
         }
