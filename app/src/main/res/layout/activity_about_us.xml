@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,6 +17,15 @@
         <include
             android:id="@+id/tool_bar"
             layout="@layout/tool_bar"></include>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/size_20dp"
+            android:textSize="@dimen/dimen_15sp"
+            android:text="Our Team"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,8 +78,8 @@
 
                 <ImageButton
                     android:id="@+id/aditya_link"
-                    android:layout_width="@dimen/dimen_30dp"
-                    android:layout_height="@dimen/dimen_30dp"
+                    android:layout_width="@dimen/size_20dp"
+                    android:layout_height="@dimen/size_20dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@drawable/github" />
@@ -125,16 +135,17 @@
 
                     <ImageButton
                         android:id="@+id/tanveer_link"
-                        android:layout_width="@dimen/dimen_30dp"
-                        android:layout_height="@dimen/dimen_30dp"
+                        android:layout_width="@dimen/size_20dp"
+                        android:layout_height="@dimen/size_20dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:background="@drawable/linkedin" />
 
                     <ImageButton
+                        android:layout_marginLeft="5dp"
                         android:id="@+id/tanveer_phone"
-                        android:layout_width="@dimen/dimen_30dp"
-                        android:layout_height="@dimen/dimen_30dp"
+                        android:layout_width="@dimen/size_20dp"
+                        android:layout_height="@dimen/size_20dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:background="@drawable/ic_settings_phone_black_36dp" />
@@ -193,8 +204,8 @@
 
                 <ImageButton
                     android:id="@+id/kabir_link"
-                    android:layout_width="@dimen/dimen_30dp"
-                    android:layout_height="@dimen/dimen_30dp"
+                    android:layout_width="@dimen/size_20dp"
+                    android:layout_height="@dimen/size_20dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@drawable/linkedin" />
@@ -242,8 +253,8 @@
 
                 <ImageButton
                     android:id="@+id/saad_link"
-                    android:layout_width="@dimen/dimen_30dp"
-                    android:layout_height="@dimen/dimen_30dp"
+                    android:layout_width="@dimen/size_20dp"
+                    android:layout_height="@dimen/size_20dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@drawable/github" />
@@ -292,8 +303,8 @@
 
             <ImageButton
                 android:id="@+id/archit_link"
-                android:layout_width="@dimen/dimen_30dp"
-                android:layout_height="@dimen/dimen_30dp"
+                android:layout_width="@dimen/size_20dp"
+                android:layout_height="@dimen/size_20dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:background="@drawable/linkedin" />
@@ -348,8 +359,8 @@
 
                 <ImageButton
                     android:id="@+id/piyush_link"
-                    android:layout_width="@dimen/dimen_30dp"
-                    android:layout_height="@dimen/dimen_30dp"
+                    android:layout_width="@dimen/size_20dp"
+                    android:layout_height="@dimen/size_20dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_weight="1"
                     android:background="@drawable/linkedin" />
@@ -396,8 +407,8 @@
 
                 <ImageButton
                     android:id="@+id/nimit_link"
-                    android:layout_width="@dimen/dimen_30dp"
-                    android:layout_height="@dimen/dimen_30dp"
+                    android:layout_width="@dimen/size_20dp"
+                    android:layout_height="@dimen/size_20dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:background="@drawable/github" />
