@@ -2,6 +2,7 @@ package com.vizy.newsapp.realread.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -26,31 +27,30 @@ public class SplashScreen extends AppCompatActivity {
         //login = (Button) findViewById(R.id.login);
 
 
-        if (session.isLoggedIn()) {
-            Intent toHome = new Intent(SplashScreen.this, MainActivity.class);
-            startActivity(toHome);
-            finish();
-        } else {
 
-        }
-
-        createAccount.setOnClickListener(new View.OnClickListener() {
+       /* createAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent toCreateAccount = new Intent(SplashScreen.this, SignIn.class);
-                startActivity(toCreateAccount);
-                finish();
-            }
-        });
 
-        /*login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent toLogin = new Intent(SplashScreen.this, SignIn.class);
-                startActivity(toLogin);
-                finish();
             }
         });*/
+
+       new Handler().postDelayed(new Runnable() {
+           @Override
+           public void run() {
+               if (session.isLoggedIn()) {
+                   Intent toHome = new Intent(SplashScreen.this, MainActivity.class);
+                   startActivity(toHome);
+                   finish();
+               }
+               else {
+                   Intent toCreateAccount = new Intent(SplashScreen.this, SignIn.class);
+                   startActivity(toCreateAccount);
+                   finish();
+               }
+
+           }
+       },2000);
     }
 
 

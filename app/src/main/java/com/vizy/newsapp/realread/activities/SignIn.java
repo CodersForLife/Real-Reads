@@ -21,8 +21,12 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.Profile;
 import com.facebook.accountkit.AccessToken;
+import com.facebook.accountkit.Account;
 import com.facebook.accountkit.AccountKit;
+import com.facebook.accountkit.AccountKitCallback;
+import com.facebook.accountkit.AccountKitError;
 import com.facebook.accountkit.AccountKitLoginResult;
+import com.facebook.accountkit.PhoneNumber;
 import com.facebook.accountkit.ui.AccountKitActivity;
 import com.facebook.accountkit.ui.AccountKitConfiguration;
 import com.facebook.accountkit.ui.LoginType;
@@ -130,41 +134,13 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
 
         final UserSession session = new UserSession(getApplicationContext());
 
-        /*signIn = (Button) findViewById(R.id.sign_in);
-        noAccount = (Button) findViewById(R.id.no_account);
-        mobileNo = (EditText) findViewById(R.id.enter_mobile_no_login);
-        password = (EditText) findViewById(R.id.enter_password_login);*/
-
-//        noAccount.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent toSignUp = new Intent(SignIn.this, SignUp.class);
-//                startActivity(toSignUp);
-//                finish();
-//            }
-//        });
-
-//        findViewById(R.id.sign_in_button).setOnClickListener(this);
-
-
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestProfile().build();
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                //.requestScopes(new Scope(Scopes.PROFILE))
-                //.requestScopes(new Scope(Scopes.PLUS_ME))
+               // .requestScopes(new Scope(Scopes.PROFILE))
+               // .requestScopes(new Scope(Scopes.PLUS_ME))
                 .build();
-       /* mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addApi(Plus.API)
-                .addScope(Plus.SCOPE_PLUS_LOGIN)
-                .addScope(Plus.SCOPE_PLUS_PROFILE)
-                .build();*/
-
-        /*SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
-        signInButton.setScopes(gso.getScopeArray());*/
-
-
 
         numberConfirmation= (RelativeLayout) findViewById(R.id.number_confirmation);
         AccountKit.initialize(getApplicationContext());
@@ -188,7 +164,7 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                 if(profile!=null){
                     //support local session in app when login through FB
                     UserSession session = new UserSession(SignIn.this);
-                    session.numberLoginSession();
+                    session.numberLoginSession(profile.getName(),profile.getLinkUri().toString());
                     Intent i =new Intent(SignIn.this,MainActivity.class);
                     startActivity(i);
                     finish();
@@ -209,65 +185,6 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                 LoginManager.getInstance().logInWithReadPermissions(SignIn.this,permissionNeeds);
             }
         });
-
-
-        //callbackManager = CallbackManager.Factory.create();
-        /*loginButton = (LoginButton) findViewById(R.id.fb_login);
-        loginButton.setReadPermissions(Arrays.asList(
-                "public_profile", "email"));*/
-        // If using in a fragment
-        //  loginButton.setActivi(this);
-        // Other app specific specialization
-        //AccessToken accessToken = AccountKit.getCurrentAccessToken();
-
-        //if (accessToken != null) {
-            //Handle Returning User
-        //} else {
-            //Handle new or logged out user
-        //}
-        // Callback registration
-        /*loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                // App code
-
-                GraphRequest graphRequest=GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-                    @Override
-                    public void onCompleted(JSONObject object, GraphResponse response) {
-                        Log.e(TAG,response.toString());
-                        try {
-                            String id=response.getJSONObject().getString("id");
-                            String email=response.getJSONObject().getString("email");
-                            String fbname=response.getJSONObject().getString("first_name");
-
-                            UserSession session = new UserSession(SignIn.this);
-                            session.facebookLoginSession(fbname, email,id);
-                            Log.e("fb login Result",email+" "+fbname);
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-                Bundle parameters = new Bundle();
-                parameters.putString("fields", "id,email,first_name,last_name");
-                graphRequest.setParameters(parameters);
-                graphRequest.executeAsync();
-
-                startActivity(new Intent(SignIn.this,MainActivity.class));
-                finish();
-            }
-
-            @Override
-            public void onCancel() {
-                // App code
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-                // App code
-            }
-        });*/
 
     }
 
@@ -301,8 +218,29 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                             loginResult.getAuthorizationCode().substring(0,10));
                 }
                 Log.e(TAG,loginResult.getAuthorizationCode().substring(0,10));
+
+               /* AccountKit.getCurrentAccount(new AccountKitCallback<Account>() {
+                    @Override
+                    public void onSuccess(Account account) {
+                        String accountKitId = account.getId();
+
+                        // Get phone number
+                        PhoneNumber phoneNumber = account.getPhoneNumber();
+                        String phoneNumberString = phoneNumber.toString();
+
+                        // Get email
+                        String email = account.getEmail();
+                        Log.e("fb det on number login",phoneNumberString+email+"Hey");
+                    }
+
+                    @Override
+                    public void onError(AccountKitError accountKitError) {
+                        Log.e("Error",accountKitError.toString());
+                    }
+                });*/
+               // String number=loginResult();
                 UserSession session = new UserSession(getApplicationContext());
-                session.numberLoginSession();
+                session.numberLoginSession("8587072927","piyush6348@gmail.com");
 
                 startActivity(new Intent(SignIn.this,MainActivity.class));
                 finish();

@@ -19,7 +19,7 @@ public class MyProfile extends AppCompatActivity {
     private EditText profileName,profileEmail,profilePhone;
     private TextView profileNameTextview,profileEmailTextview,profileNumberTextview;
     private ImageView profilePic;
-    private String picUrl,id;
+    private String picUrl=null,id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,20 +39,24 @@ public class MyProfile extends AppCompatActivity {
 
         HashMap<String, String> user = session.getUserDetails();
 
-        if(user.get(UserSession.GOOGLE_ID)==null)
+        if(user.get(UserSession.GOOGLE_ID)!=null)
         {
-            id=user.get(UserSession.KEY_ID);
-            picUrl="https://graph.facebook.com/" + id + "/picture?type=large";
+
+            picUrl=user.get(UserSession.GOOGLE_ID);
         }
-        else
+        else if(user.get(UserSession.KEY_ID)!=null)
         {
            //id=user.get(UserSession.GOOGLE_ID);
             //picUrl="https://www.googleapis.com/plus/v1/people/"+id+"?sz=100";
-            picUrl=user.get(UserSession.GOOGLE_ID);
+            id=user.get(UserSession.KEY_ID);
+            picUrl="https://graph.facebook.com/" + id + "/picture?type=large";
+
+        }
+        else {
 
         }
 
-        Log.e("url",picUrl);
+        Log.e("url","pic"+picUrl);
         String name = user.get(UserSession.KEY_NAME);
         String email = user.get(UserSession.KEY_EMAIL);
 
@@ -71,6 +75,7 @@ public class MyProfile extends AppCompatActivity {
             profileEmailTextview.setText(email);
         }
 
+        if(picUrl!=null)
         Picasso.with(this).load(picUrl).into(profilePic);
     }
 }

@@ -47,6 +47,7 @@ public class Favourites extends AppCompatActivity implements LoaderManager.Loade
         noBookmarkMsg=(TextView)findViewById(R.id.no_bookmark_msg);
         favouriteToolbar=(Toolbar)findViewById(R.id.favourite_toolbar);
         setSupportActionBar(favouriteToolbar);
+        this.setTitle("\tFavourites");
 
         progressBar = (ProgressBar) findViewById(R.id.favourite_progress_bar);
         newsList = new ArrayList<Article>();
@@ -65,7 +66,9 @@ public class Favourites extends AppCompatActivity implements LoaderManager.Loade
     }
 
     @Override
-    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+    public void onLoadFinished(Loader<Cursor> loader, Cursor c) {
+        Cursor cursor=getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,null,DatabseColumns.BOOKMARK
+                + " = ?", new String[]{"1"}, null);
         int ct = cursor.getCount();
         cursor.moveToLast();
 
