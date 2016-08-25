@@ -148,7 +148,10 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestProfile().build();
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, gso).build();
+                .enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .requestScopes(new Scope(Scopes.PROFILE))
+                .requestScopes(new Scope(Scopes.PLUS_ME))
+                .build();
        /* mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Plus.API)
                 .addScope(Plus.SCOPE_PLUS_LOGIN)
