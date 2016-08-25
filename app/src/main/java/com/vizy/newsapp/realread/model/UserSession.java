@@ -62,8 +62,10 @@ public class UserSession {
         editor.commit();
     }
 
-    public void numberLoginSession(){
+    public void numberLoginSession(String number,String email){
         editor.putBoolean(IS_LOGIN, true);
+        editor.putString(KEY_NAME,number);
+        editor.putString(KEY_EMAIL,email);
         editor.commit();
     }
 
