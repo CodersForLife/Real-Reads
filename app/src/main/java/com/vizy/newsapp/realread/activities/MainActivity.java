@@ -8,6 +8,7 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -69,7 +70,7 @@ View.OnTouchListener{
     private NavigationView homeNavigationView;
     private View homeNavigationHeaderView;
     private ImageView userImage;
-    private TextView userName,myProfileNavigationDrawer,favouritesNavigationDrawer,aboutUsNavigationDrawer,rateUsNavigationDrawer;
+    private TextView userName,myProfileNavigationDrawer,favouritesNavigationDrawer,aboutUsNavigationDrawer,rateUsNavigationDrawer, logoutNavigationDrawer;
     private LinearLayout logout,myProfile,favouriteLayout,rateUs,aboutUs;
 
     @Override
@@ -77,6 +78,9 @@ View.OnTouchListener{
         super.onCreate(savedInstanceState);
        // getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         setContentView(R.layout.activity_main);
+
+        Typeface roboto = Typeface.createFromAsset(getAssets(), "fonts/Raleway-ExtraLight.ttf");
+
 //        getActionBar().setBackgroundDrawable(new ColorDrawable(Color.argb(128, 0, 0, 0)));
         context = getApplicationContext();
         homeNavigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -98,6 +102,13 @@ View.OnTouchListener{
         favouritesNavigationDrawer=(TextView)homeNavigationHeaderView.findViewById(R.id.favourites_navigation_drawer);
         aboutUsNavigationDrawer=(TextView)homeNavigationHeaderView.findViewById(R.id.about_us_navigation_drawer);
         rateUsNavigationDrawer=(TextView)homeNavigationHeaderView.findViewById(R.id.rate_us_navigation_drawer);
+        logoutNavigationDrawer=(TextView)homeNavigationHeaderView.findViewById(R.id.logout_navigation_drawer);
+
+        myProfileNavigationDrawer.setTypeface(roboto);
+        favouritesNavigationDrawer.setTypeface(roboto);
+        aboutUsNavigationDrawer.setTypeface(roboto);
+        rateUsNavigationDrawer.setTypeface(roboto);
+        logoutNavigationDrawer.setTypeface(roboto);
 
         ActionBarDrawerToggle actionBarDrawerToggle=new ActionBarDrawerToggle(this, homeDrawerLayout, toolbar, R.string.openDrawer, R.string.closeDrawer){
             @Override

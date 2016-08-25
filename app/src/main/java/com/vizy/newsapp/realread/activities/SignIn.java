@@ -34,9 +34,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
 import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Scope;
 import com.vizy.newsapp.realread.R;
 import com.vizy.newsapp.realread.model.UserSession;
 
@@ -149,8 +151,8 @@ public class SignIn extends AppCompatActivity implements GoogleApiClient.OnConne
                 .requestProfile().build();
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this).addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .requestScopes(new Scope(Scopes.PROFILE))
-                .requestScopes(new Scope(Scopes.PLUS_ME))
+                //.requestScopes(new Scope(Scopes.PROFILE))
+                //.requestScopes(new Scope(Scopes.PLUS_ME))
                 .build();
        /* mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addApi(Plus.API)
