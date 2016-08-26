@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/user_image"
             android:gravity="center"
-            android:text="Archit"
+            android:text="Piyush "
             android:textColor="@color/on_released_text_color_navigation_drawer"
             android:textSize="@dimen/dimen_15sp"
             android:textStyle="bold" />
