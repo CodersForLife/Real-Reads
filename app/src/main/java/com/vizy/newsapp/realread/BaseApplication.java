@@ -6,7 +6,6 @@ import android.app.Application;
 import com.facebook.FacebookSdk;
 import com.facebook.accountkit.AccountKit;
 import com.facebook.appevents.AppEventsLogger;
-import com.firebase.client.Firebase;
 
 public class BaseApplication extends Application{
 
@@ -15,7 +14,6 @@ public class BaseApplication extends Application{
         super.onCreate();
         //MultiDex.install(this);
         AccountKit.initialize(getApplicationContext());
-        Firebase.setAndroidContext(getApplicationContext());
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
     }
